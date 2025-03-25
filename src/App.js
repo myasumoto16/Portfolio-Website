@@ -18,7 +18,7 @@ function App() {
         {currentSection === 'about' && <About />}
         {currentSection === 'experience' && <Experience />}
         {currentSection === 'projects' && <Projects />}
-        {currentSection === 'music' && <Music />}
+        {currentSection === 'music' && <Music setCurrentSection={setCurrentSection}/>}
         {currentSection === 'contact' && <Contact />}
       </main>
       <Footer />

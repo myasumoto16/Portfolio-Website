@@ -1,6 +1,6 @@
 import './Music.css';
 
-function Music() {
+function Music({ setCurrentSection }) {
   // const musicProjects = [
     // {
     //   id: 1,
@@ -119,7 +119,13 @@ function Music() {
       <div className="music-cta">
         <h3>Interested in collaborating?</h3>
         <p>I'm always open to new musical projects and collaborations. Reach out through the contact form!</p>
-        <button className="music-contact-btn" onClick={() => window.location.href = '#contact'}>Get in Touch</button>
+        <button 
+          className="music-contact-btn" 
+          onClick={() => setCurrentSection('contact')}
+        >
+          Get in Touch
+        </button>
+
       </div>
     </section>
   );
