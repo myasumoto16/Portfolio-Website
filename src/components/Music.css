@@ -102,8 +102,10 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
   }
   
   .video-container {
@@ -111,59 +113,53 @@
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .video-placeholder {
     width: 100%;
-    height: 400px;
-    background-color: #2c3e50;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
   }
   
-  .play-button {
-    width: 80px;
-    height: 80px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+  .video-embed {
     position: relative;
-  }
-  
-  .play-button:before {
-    content: '';
-    width: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
     height: 0;
-    border-top: 20px solid transparent;
-    border-left: 30px solid white;
-    border-bottom: 20px solid transparent;
-    margin-left: 8px;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
   }
   
   .video-info {
     padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .video-info h4 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #2c3e50;
     margin-bottom: 0.5rem;
+    word-wrap: break-word;
   }
   
   .video-date {
     color: #7f8c8d;
     font-style: italic;
     margin-bottom: 1rem;
+    font-size: 0.9rem;
   }
   
   .video-description {
     color: #555;
+    font-size: 1rem;
   }
+  
   
   .music-cta {
     max-width: 800px;
