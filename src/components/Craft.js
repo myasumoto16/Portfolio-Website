@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Craft.css';
 import minion1 from '../assets/crafts/minion-1.jpeg';
 import minion2 from '../assets/crafts/minion-2.jpeg';
@@ -69,30 +69,27 @@ function Craft() {
     setCurrentImageIndex(0);
   };
 
-  // Function to handle keyboard navigation
-  const handleKeyDown = (e) => {
-    if (!selectedProject) return;
-    
-    // Get all images (main + additional)
-    const allImages = [selectedProject.mainImage, ...selectedProject.additionalImages];
-    
-    if (e.key === 'ArrowRight') {
-      // Go to next image
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % allImages.length);
-    } else if (e.key === 'ArrowLeft') {
-      // Go to previous image
-      setCurrentImageIndex((prevIndex) => (prevIndex - 1 + allImages.length) % allImages.length);
-    }
-  };
-
-  // Add/remove event listener for keyboard navigation
+  const handleKeyDown = useCallback(
+    (e) => {
+      if (!selectedProject) return;
+  
+      const allImages = [selectedProject.mainImage, ...selectedProject.additionalImages];
+  
+      if (e.key === 'ArrowRight') {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % allImages.length);
+      } else if (e.key === 'ArrowLeft') {
+        setCurrentImageIndex((prevIndex) => (prevIndex - 1 + allImages.length) % allImages.length);
+      }
+    },
+    [selectedProject] 
+  );
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
     
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [selectedProject]); // Re-add listener when selected project changes
+  }, [selectedProject, handleKeyDown]);
   
   // Function to set the thumbnail as the main image
   const setMainImage = (index) => {
