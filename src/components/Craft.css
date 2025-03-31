@@ -1,0 +1,199 @@
+.craft-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .craft-section h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .craft-section > p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #666;
+  }
+  
+  .craft-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .craft-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .craft-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .craft-image-container {
+    height: 380px; 
+    overflow: hidden;
+  }
+  
+  
+  .craft-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .craft-card:hover .craft-image {
+    transform: scale(1.05);
+  }
+  
+  .craft-info {
+    padding: 1.5rem;
+  }
+  
+  .craft-info h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .craft-info p {
+    margin-bottom: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .view-more-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .view-more-btn:hover {
+    background-color: #357abd;
+  }
+  
+  /* Modal styles */
+  .project-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .project-modal {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 700px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  .close-modal-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  
+  .close-modal-btn:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .project-gallery {
+    margin-top: 1.5rem;
+  }
+  
+/* Add these styles to your existing Craft.css file */
+
+.main-project-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.main-project-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+
+.main-project-image img {
+  max-width: 100%;
+  max-height: 60vh; /* Limit height relative to viewport */
+  object-fit: contain;
+}
+
+.selected-thumbnail {
+  border: 2px solid #0066cc;
+  box-shadow: 0 0 5px rgba(0, 102, 204, 0.5);
+}
+
+.navigation-help {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 10px;
+  color: #666;
+}
+
+/* Make sure your additional images section is properly styled */
+.additional-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.additional-images img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.additional-images img:hover {
+  transform: scale(1.05);
+}
+  
+  /* Add some responsive styles */
+  @media (max-width: 768px) {
+    .project-modal {
+      padding: 1.5rem;
+      width: 95%;
+    }
+    
+    .additional-images {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
