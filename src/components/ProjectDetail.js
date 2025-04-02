@@ -60,9 +60,18 @@ function ProjectDetail({ project, goBack }) {
               ) : (
                 <p>No bullets listed</p>
               )}
+
+                {section.image && (
+                <div className="section-image">
+                  <img src={section.image} alt={section.title} />
+                </div>
+              )}
+
             </section>
           );
         })}
+
+        
       </div>
     </div>
   );

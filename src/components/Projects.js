@@ -1,15 +1,17 @@
 import React from 'react';
 import './Projects.css';
+import aws_diagram from "../assets/projects/AWS_Diagram.jpeg";
 
 function Projects({ setSelectedProject }) {
   const projects = [
     {
       id: 1,
-      title: "Smart Medicine Box 💊",
+      title: "Smart Medication Bottle 💊",
       description: "Smart medication bottle with built-in sensors that detects when it’s opened and sends users text or email notifications. It is also connected with Alexa for voice-based queries.",
       technologies: ["ESP8266", "AWS Lambda", "DynamoDB", "Alexa Skills", "IoT"],
       repo: "",
       demo: "",
+      mainImage: "",
       fullDescription: "This project helps users maintain their medication schedule by detecting when the bottle is opened and sending alerts. It also integrates with Alexa to allow users to ask if they've taken their medication.",
       intro: [
         "I struggle with remembering to take my pill every day.",
@@ -34,7 +36,7 @@ function Projects({ setSelectedProject }) {
           "The reed switch triggers the reset operation upon disconnection.",
           "Once reset, the setup function runs, sends a message to the server ESP8266, and immediately returns to deep sleep.",
           "The system only runs once or twice a day to conserve power."
-          ]
+          ],
         },
         {
           title: "First Prototype - One ESP8266",
@@ -61,6 +63,8 @@ function Projects({ setSelectedProject }) {
           "The server ESP8266 sends a REST API POST request to an AWS API Gateway, triggering a Lambda function that updates the database.",
           "Developed an Alexa skill that allows users to ask ‘Have I taken my medication today?’ Alexa queries the database and provides a response based on the stored timestamps."
           ],
+          image: aws_diagram,
+          // image: "AWS Diagram.png",
         },
         {
           title: "Third Prototype - Perfboard with CR123A", 
@@ -69,8 +73,8 @@ function Projects({ setSelectedProject }) {
               "The client ESP8266 sends an ESP-NOW message to the server ESP8266, but battery life remains a concern."],
           }
       ],
-      videoDemo: "", // Add link if available
-      github: "", // Add link if available
+      videoDemo: "", 
+      github: "", 
       detail: true,
     },
     {
