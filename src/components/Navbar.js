@@ -5,7 +5,6 @@ function Navbar({ currentSection, setCurrentSection, otherSection, setOtherSecti
   const [isOtherDropdownOpen, setIsOtherDropdownOpen] = useState(false);
   
   const handleOtherClick = () => {
-    // Just toggle dropdown without changing section
     setIsOtherDropdownOpen(!isOtherDropdownOpen);
   };
   
@@ -45,7 +44,12 @@ function Navbar({ currentSection, setCurrentSection, otherSection, setOtherSecti
               <li className={otherSection === 'craft' && currentSection === 'other' ? 'active' : ''}>
                 <button onClick={() => handleOtherOptionClick('craft')}>Craft</button>
               </li>
-              {/* Add more options here as needed */}
+              {/* <li className={otherSection === 'cooking' && currentSection === 'other' ? 'active' : ''}>
+                <button onClick={() => handleOtherOptionClick('cooking')}>Cooking</button>
+              </li>
+              <li className={otherSection === 'baking' && currentSection === 'other' ? 'active' : ''}>
+                <button onClick={() => handleOtherOptionClick('baking')}>Baking</button>
+              </li> */}
             </ul>
           )}
         </li>

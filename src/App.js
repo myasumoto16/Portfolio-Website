@@ -8,10 +8,12 @@ import Contact from './components/Contact';
 import Craft from './components/Craft';
 import Footer from './components/Footer';
 import './App.css';
+import ProjectDetail from './components/ProjectDetail';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('about');
   const [otherSection, setOtherSection] = useState('craft');
+  const [selectedProject, setSelectedProject] = useState(null);
   
   return (
     <div className="App">
@@ -24,7 +26,15 @@ function App() {
       <main>
         {currentSection === 'about' && <About />}
         {currentSection === 'experience' && <Experience />}
-        {currentSection === 'projects' && <Projects />}
+        {currentSection === 'projects' && !selectedProject && (
+          <Projects setSelectedProject={setSelectedProject} />
+        )}
+        {currentSection === 'projects' && selectedProject && (
+          <ProjectDetail 
+            project={selectedProject} 
+            goBack={() => setSelectedProject(null)} 
+          />
+        )}
         {currentSection === 'music' && <Music setCurrentSection={setCurrentSection} />}
         {currentSection === 'contact' && <Contact />}
         {currentSection === 'other' && otherSection === 'craft' && <Craft />}
