@@ -16,7 +16,7 @@ function Projects() {
           <div 
             className="project-card" 
             key={project.id}
-            onClick={() => handleProjectClick(project.id)}
+            onClick={project.intro ? () => handleProjectClick(project.id) : undefined}
           >
             <h3>{project.title}</h3>
             <p>{project.description}</p>

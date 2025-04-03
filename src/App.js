@@ -10,25 +10,26 @@ import Craft from './components/Craft';
 import Footer from './components/Footer';
 import ProjectDetail from './components/ProjectDetail';
 import aws_diagram from "./assets/projects/AWS_Diagram.jpeg";
+import intial_circuit from "./assets/projects/Schematic_Smart-Medication-Bottle_2025-04-03.png";
 
 import './App.css';
 
 export const projects = [
   {
-    id: "smartmedicationbottole",
+    id: "smartmedicationbottle",
     title: "Smart Medication Bottle 💊",
     description: "Smart medication bottle with built-in sensors that detects when it’s opened and sends users text or email notifications. It is also connected with Alexa for voice-based queries.",
-    technologies: ["ESP8266", "AWS Lambda", "DynamoDB", "Alexa Skills", "IoT"],
+    technologies: ["ESP8266", "C++", "AWS Lambda", "DynamoDB", "Alexa Skills", "IoT"],
     repo: "",
     demo: "",
     mainImage: "",
     fullDescription: "This project helps users maintain their medication schedule by detecting when the bottle is opened and sending alerts. It also integrates with Alexa to allow users to ask if they've taken their medication.",
     intro: [
-      "I struggle with remembering to take my pill every day.",
-      "I also struggle with remembering if I have taken my pill for the day or not, resulting in double dosing or not taking the pill at all.",
-      "I decided to use my software development skills and learn new hardware skills like soldering, circuit design, and IoT."
+      "Is it just me or does anyone else struggle with remembering to take their pill every day? The bigger issue is not remembering if I have taken my pill for the day or not, resulting in double dosing or not taking the pill at all, which is not great! ",
+      "I decided to use my software development skills and learn new hardware skills like soldering, circuit design, and IoT to create a notification system that will never make forget my medication intake. I also love using Alexa in my daily-life so I wanted to revisit and brush up on my AWS skills!"
     ],
     techStack: [
+      "C++",
       "ESP8266 NodeMCU board",
       "CR123A battery",
       "AWS: Lambda, API Gateway, DynamoDB",
@@ -46,6 +47,9 @@ export const projects = [
         "The reed switch triggers the reset operation upon disconnection.",
         "Once reset, the setup function runs, sends a message to the server ESP8266, and immediately returns to deep sleep.",
         "The system only runs once or twice a day to conserve power."
+        ],
+        images: [
+          {url: intial_circuit, description: "Initial Circuit Design"},
         ],
       },
       {
@@ -75,7 +79,6 @@ export const projects = [
         images: [
           {url: aws_diagram, description: "AWS Diagram"},
         ],
-        // image: "AWS Diagram.png",
       },
       {
         title: "Third Prototype - Perfboard with CR123A", 

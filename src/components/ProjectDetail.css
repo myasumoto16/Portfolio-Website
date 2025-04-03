@@ -123,6 +123,8 @@
     text-align: center; 
     margin-top: 20px;
     margin-bottom: 20px; 
+    width: 100%;
+    max-height: 800px;
   }
   
   .section-image img {
@@ -136,4 +138,8 @@
   /* Add a hover effect to scale the image slightly */
   .section-image img:hover {
     transform: scale(1.05); /* Slight zoom on hover */
+  }
+
+  .project-section p {
+    margin-bottom: 10px;  /* Adjust as needed */
   }

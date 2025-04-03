@@ -51,6 +51,18 @@ function ProjectDetail({ projects }) {
           <h2>Overview</h2>
           <p>{project.fullDescription}</p>
         </section>
+        
+        {Array.isArray(project.intro) ? (
+            <section className="project-section">
+                <h2>Introduction</h2>
+                {project.intro.map((para, index) => (
+                    <p key={index} className="mb-4">{para}</p> 
+                ))}    
+            </section>
+        ) : (<p></p>)}
+
+
+
 
         {Array.isArray(project.sections) &&
           project.sections.map((section, index) => (
@@ -66,11 +78,11 @@ function ProjectDetail({ projects }) {
                 <p>No bullets listed</p>
               )}
 
-              {section.image && (
+              {/* {section.image && (
                 <div className="section-image">
                   <img src={section.image} alt={section.title} />
                 </div>
-              )}
+              )} */}
 
               {Array.isArray(section.images) && section.images.length > 0 ? (
                 section.images.map((image, imgIndex) => (
@@ -80,7 +92,7 @@ function ProjectDetail({ projects }) {
                   </div>
                 ))
               ) : (
-                <p>No images listed</p>
+                <p></p>
               )}
             </section>
           ))}

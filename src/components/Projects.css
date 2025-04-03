@@ -10,6 +10,7 @@
   }
   
   .project-card {
+    cursor: pointer;
     background-color: white;
     border-radius: 8px;
     overflow: hidden;
