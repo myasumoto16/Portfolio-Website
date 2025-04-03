@@ -22,6 +22,8 @@
   margin-left: 1.5rem;
 }
 
+/* Style for both NavLink and button elements */
+.nav-links a,
 .nav-links button {
   background: none;
   border: none;
@@ -32,17 +34,21 @@
   padding: 0.5rem 0;
   cursor: pointer;
   font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
 }
 
+.nav-links a:hover,
 .nav-links button:hover {
   color: #3498db;
 }
 
-.nav-links li.active button {
+/* Active state styling for NavLink */
+.nav-links a.active {
   color: #3498db;
 }
 
-.nav-links li.active button::after {
+.nav-links a.active::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -57,6 +63,14 @@
   position: relative;
   display: flex;
   align-items: center;
+}
+
+.dropdown-container.active .dropdown-trigger {
+  color: #3498db;
+}
+
+.dropdown-container.active .dropdown-trigger::after {
+  background-color: #3498db;
 }
 
 .dropdown-trigger {
@@ -89,25 +103,27 @@
   width: 100%;
 }
 
-.dropdown-menu button {
+/* Style for dropdown NavLinks */
+.dropdown-menu a {
   width: 100%;
   text-align: left;
   padding: 0.5rem 1rem;
   white-space: nowrap;
-  color: white; /* Ensure dropdown text is white */
+  color: white;
+  display: block;
 }
 
-.dropdown-menu button:hover {
+.dropdown-menu a:hover {
   background-color: #3a4e61;
-  color: #3498db; /* Change color only on hover */
-}
-
-/* Only apply the blue color when both the other section is active AND it's the current section */
-.dropdown-menu li.active button {
   color: #3498db;
 }
 
-.dropdown-menu li.active button::after {
+/* Active state for dropdown items */
+.dropdown-menu a.active {
+  /* color: #3498db; */
+}
+
+.dropdown-menu a.active::after {
   display: none;
 }
 
