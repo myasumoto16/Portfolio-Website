@@ -65,10 +65,6 @@ function ProjectDetail({ projects }) {
             </section>
         ) : (<p></p>)}
 
-
-        console.log("Section images:", section.images);
-
-
         {Array.isArray(project.sections) &&
           project.sections.map((section, index) => (
             <section key={index} className="project-section">
