@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css';
 
-function Navbar({ currentSection, setCurrentSection, otherSection, setOtherSection }) {
+function Navbar() {
   const [isOtherDropdownOpen, setIsOtherDropdownOpen] = useState(false);
+  const location = useLocation();
   
   const handleOtherClick = () => {
-    // Just toggle dropdown without changing section
     setIsOtherDropdownOpen(!isOtherDropdownOpen);
   };
   
-  const handleOtherOptionClick = (option) => {
-    setCurrentSection('other');
-    setOtherSection(option);
-    setIsOtherDropdownOpen(false);
-  };
+  const isOtherActive = location.pathname.startsWith('/other');
   
   return (
     <nav className="navbar">
@@ -21,19 +18,29 @@ function Navbar({ currentSection, setCurrentSection, otherSection, setOtherSecti
         <h1>Masakazu Yasumoto</h1>
       </div>
       <ul className="nav-links">
-        <li className={currentSection === 'about' ? 'active' : ''}>
-          <button onClick={() => setCurrentSection('about')}>About</button>
+        <li>
+          <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>
+            About
+          </NavLink>
         </li>
-        <li className={currentSection === 'experience' ? 'active' : ''}>
-          <button onClick={() => setCurrentSection('experience')}>Experience</button>
+        <li>
+          <NavLink to="/experience" className={({ isActive }) => isActive ? 'active' : ''}>
+            Experience
+          </NavLink>
         </li>
-        <li className={currentSection === 'projects' ? 'active' : ''}>
-          <button onClick={() => setCurrentSection('projects')}>Projects</button>
+        <li>
+          <NavLink to="/projects" className={({ isActive }) => 
+            isActive || location.pathname.startsWith('/projects/') ? 'active' : ''
+          }>
+            Projects
+          </NavLink>
         </li>
-        <li className={currentSection === 'music' ? 'active' : ''}>
-          <button onClick={() => setCurrentSection('music')}>Music</button>
+        <li>
+          <NavLink to="/music" className={({ isActive }) => isActive ? 'active' : ''}>
+            Music
+          </NavLink>
         </li>
-        <li className={`dropdown-container ${currentSection === 'other' ? 'active' : ''}`}>
+        <li className={`dropdown-container ${isOtherActive ? 'active' : ''}`}>
           <button 
             className="dropdown-trigger"
             onClick={handleOtherClick}
@@ -42,15 +49,28 @@ function Navbar({ currentSection, setCurrentSection, otherSection, setOtherSecti
           </button>
           {isOtherDropdownOpen && (
             <ul className="dropdown-menu">
-              <li className={otherSection === 'craft' && currentSection === 'other' ? 'active' : ''}>
-                <button onClick={() => handleOtherOptionClick('craft')}>Craft</button>
+              <li>
+                <NavLink to="/other/craft" className={({ isActive }) => isActive ? 'active' : ''}>
+                  Craft
+                </NavLink>
               </li>
-              {/* Add more options here as needed */}
+              {/* <li>
+                <NavLink to="/other/cooking" className={({ isActive }) => isActive ? 'active' : ''}>
+                  Cooking
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/other/baking" className={({ isActive }) => isActive ? 'active' : ''}>
+                  Baking
+                </NavLink>
+              </li> */}
             </ul>
           )}
         </li>
-        <li className={currentSection === 'contact' ? 'active' : ''}>
-          <button onClick={() => setCurrentSection('contact')}>Contact</button>
+        <li>
+          <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>
+            Contact
+          </NavLink>
         </li>
       </ul>
     </nav>

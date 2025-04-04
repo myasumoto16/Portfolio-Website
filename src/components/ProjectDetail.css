@@ -1,0 +1,146 @@
+/* Full Page Layout */
+.project-detail-container {
+    max-width: 100%;
+    height: 100vh;
+    padding: 40px;
+    background-color: #ffffff; /* Lighter background */
+    color: #000000; /* Black text */
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #000000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 5px 0;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    text-align: left;
+}
+
+.back-button:hover {
+    color: #555555; /* Darker color for hover */
+}
+
+.project-tech-stack {
+    margin: 20px 0;
+}
+
+.tech-tag {
+    display: inline-block;
+    background-color: #f0f0f0; /* Light background for tags */
+    color: #000000; /* Black text */
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.project-links {
+    margin: 20px 0;
+    display: flex;
+    gap: 15px;
+}
+
+.project-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #1f73b7; /* Blue link color */
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.project-link:hover {
+    background-color: #0a4a6b; /* Darker blue for hover */
+}
+
+.project-content {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f9f9f9; /* Light background for content area */
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.project-section {
+    margin-bottom: 30px;
+}
+
+.project-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #000000; /* Black color for headers */
+}
+
+.project-section ul {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.project-section li {
+    margin-bottom: 8px;
+    color: #333333; /* Dark gray for list items */
+}
+
+.project-section p {
+    color: #555555; /* Darker text for paragraphs */
+    font-size: 1rem;
+}
+
+.project-section li.no-data, .project-section p.no-data {
+    font-style: italic;
+    color: #888888; /* Lighter gray for no-data text */
+}
+
+.project-tech-stack p {
+    color: #888888; /* Lighter gray for tech stack description */
+    font-style: italic;
+}
+
+.project-section ul li {
+    margin-bottom: 12px;
+}
+
+.project-links .project-link {
+    font-size: 1.1rem;
+}
+
+.section-image {
+    text-align: center; 
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    width: 100%;
+    max-height: 800px;
+    align-items: center;
+  }
+  
+  .section-image img {
+    max-width: 100%;  
+    height: auto; 
+    max-height: 400px;   
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; 
+  }
+  
+  .section-image img:hover {
+    transform: scale(1.05); 
+  }
+
+  .project-section p {
+    margin-bottom: 10px;  
+  }

@@ -24,7 +24,7 @@ function Craft() {
   const craftProjects = [
     {
       id: 1,
-      title: 'Minion Amigurumi',
+      title: 'Minion',
       description: 'A small minion (Dave) Amigurumi. This was my first amigurumi project!',
       mainImage: minion1,
       additionalImages: [
