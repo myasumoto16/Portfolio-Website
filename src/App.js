@@ -82,9 +82,9 @@ export const projects = [
       {
         title: "Alexa Integration", 
         bullets: [
-          "I love using Alexa in my everyday life for simple yet impactful tasks like turning on lights and managing home security systems. This personal experience with voice assistants inspired me to integrate Alexa into my smart medication tracking system, aiming to make health management just as effortless and intuitive.",
+          "I love using Alexa in my everyday life. It makes getting information simple and convenient through voice commands, without the distractions of other apps on my phone. I don't want to accidentally get sucked into mindless scrolling while trying to rememeber if I took my medication!",
           "To enable this functionality, I created a DynamoDB table to store timestamps whenever the medication bottle is opened. When the server ESP8266 detects the event, it sends a REST API POST request to an AWS API Gateway endpoint. This triggers a Lambda function that records the timestamp in the DynamoDB table, ensuring the data is securely and accurately stored in real time.",
-          "Building on this foundation, I developed a custom Alexa skill that allows users to ask, “Have I taken my medication today?” When prompted, Alexa queries the DynamoDB table through another Lambda function, checks for the last recorded activity, and checks if the date matches the current date. This voice-enabled interaction adds convenience, especially for users who may forget whether they’ve taken their medication, reinforcing the system’s usefulness in daily routines.",
+          "Building on this foundation, I developed a custom Alexa skill that allows users to ask, “Have I taken my medication today?” When prompted, Alexa queries the DynamoDB table through another Lambda function, checks for the last recorded activity, and checks if the date matches the current date. This is so much more practical and useful than email or text notifications for someone like me!",
         ],
         images: [
           {url: aws_diagram, description: "AWS Diagram"},
@@ -94,7 +94,7 @@ export const projects = [
       },
       {
         title: "Third Prototype - Perfboard with CR123A", 
-        bullets: ["The final version of the project involved assembling all components onto a compact perfboard, powered by a CR123A battery. The most challenging part of the build was soldering, which took some practice to get used to.", 
+        bullets: ["The third version of the project involved assembling all components onto a compact perfboard, powered by a CR123A battery. The most challenging part of the build was soldering, which took some practice to get used to.", 
           "The system functioned as expected, but the battery drained in under 24 hours, which was a major concern. Several possibilities could explain this rapid drain: the deep sleep function may not have executed correctly, the circuit design might be flawed and causing a constant draw, or deep sleep is working but still consuming more power than anticipated.",
           "Through further research, I discovered that the NodeMCU D1 Mini boards sometimes require two reset signals to fully reboot. I observed that when the magnet was removed from the reed switch, the board would reset inconsistently—sometimes it triggered a full reset, and other times it didn’t. It appears that the first reset may only wake the board without executing the setup() and loop() functions, while the second reset fully initializes the board. If only one reset is triggered, the board may stay awake without re-entering deep sleep, leading to significantly increased battery usage.",
         ],
