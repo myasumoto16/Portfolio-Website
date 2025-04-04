@@ -11,6 +11,12 @@ import Footer from './components/Footer';
 import ProjectDetail from './components/ProjectDetail';
 import aws_diagram from "./assets/projects/AWS_Diagram.jpeg";
 import intial_circuit from "./assets/projects/Schematic_Smart-Medication-Bottle_2025-04-03.png";
+import first_pro from "./assets/projects/first-proto.jpeg";
+import second_pro from "./assets/projects/second-proto.jpeg";
+import third_pro1 from "./assets/projects/third-proto-1.jpg";
+import third_pro2 from "./assets/projects/third-proto-2.jpeg";
+import alexademo1 from "./assets/projects/alexa1.PNG";
+import emaildemo from "./assets/projects/email.PNG";
 
 import './App.css';
 
@@ -25,8 +31,8 @@ export const projects = [
     mainImage: "",
     fullDescription: "This project helps users maintain their medication schedule by detecting when the bottle is opened and sending alerts. It also integrates with Alexa to allow users to ask if they've taken their medication.",
     intro: [
-      "Is it just me or does anyone else struggle with remembering to take their pill every day? The bigger issue is not remembering if I have taken my pill for the day or not, resulting in double dosing or not taking the pill at all, which is not great! ",
-      "I decided to use my software development skills and learn new hardware skills like soldering, circuit design, and IoT to create a notification system that will never make forget my medication intake. I also love using Alexa in my daily-life so I wanted to revisit and brush up on my AWS skills!"
+      "Does anyone else struggle with remembering to take their pill every day? My biggest challenge isn’t just forgetting—it’s not knowing whether I’ve already taken it, which can lead to double dosing or missing a dose entirely. Not ideal!",
+      "To solve this, I decided to combine my software development skills with new hardware skills like soldering, circuit design, and IoT to build a smart notification system that ensures I never forget my medication. Since I also love using Alexa in my daily life, I saw this as a great opportunity to refresh my AWS skills as well!",
     ],
     techStack: [
       "C++",
@@ -42,11 +48,10 @@ export const projects = [
       {
         title: "Initial Design",
         bullets: [
-        "Default state is deep sleep for power saving.",
-        "Connecting RST and GPIO16 (D0) allows the board to reset when the RST pin is pulled from HIGH to LOW.",
-        "The reed switch triggers the reset operation upon disconnection.",
-        "Once reset, the setup function runs, sends a message to the server ESP8266, and immediately returns to deep sleep.",
-        "The system only runs once or twice a day to conserve power."
+        "I chose the ESP12F, specifically the NodeMCU D1 Mini, for several reasons. First, its compact size makes it ideal for attaching to a medication bottle. Second, it includes built-in Wi-Fi and Bluetooth capabilities, which are essential for sending notifications and integrating with AWS.",
+        "The initial design prioritizes power efficiency by keeping the system in deep sleep mode when not in use. To enable automatic wake-up, the RST and GPIO16 (D0) pins are connected, allowing the board to reset. A normally open (N.O) reed switch acts as the trigger, initiating the reset sequence whenever it is disconnected.",
+        "When the bottle is closed, the magnet is positioned near the reed switch. When the bottle is opened and the magnet moves away, the RST pin transitions from HIGH to LOW, triggering a reset operation",
+        "Upon waking, the setup() function executes, either sending a notification or message to another ESP8266 before immediately returning to deep sleep. This ensures minimal power consumption, as the system only activates once or twice a day, striking a balance between functionality and battery life."
         ],
         images: [
           {url: intial_circuit, description: "Initial Circuit Design"},
@@ -55,36 +60,55 @@ export const projects = [
       {
         title: "First Prototype - One ESP8266",
         bullets: [
-          "Breadboard prototyping with one ESP8266 responsible for detecting the reed switch connection/disconnection and connecting to Wi-Fi, sending email/text notifications.",
-          "Works fine but not practical because it takes 10-20 seconds for the whole operation. The user could have already taken the pill before it's completed, and it can interrupt the operation.",
-          "It’s also power-consuming if the system is battery-powered, especially with the Wi-Fi connection and email sending process."
-        ],      
+          "During the first breadboard prototyping, one ESP8266 was used to detect the reed switch state (connection/disconnection), connect to Wi-Fi, and send email or text notifications at once. Functionally, the system worked as intended, successfully detecting bottle openings and sending alerts.",
+          "However, this approach proved impractical in real-world use. The entire process—from detection to notification—took 10–20 seconds, during which the user could have already taken the medication and put the cap back on, which would interrupt the operation. Additionally, the reliance on Wi-Fi connectivity and message transmission made the system power-hungry, which is a major drawback for battery-powered applications.",
+        ],  
+        images: [
+          {url: first_pro, description: "First Prototype"},
+          {url: emaildemo, description: "Email Notification"},
+        ],    
       },
       {
         title: "Second Prototype - Two ESP8266s",
         bullets: [
-        "Breadboard prototype with two ESP8266s.",
-        "One ESP8266 is attached to the bottle as a client, responsible only for reed switch detection and sending a message to the server ESP8266.",
-        "The other ESP8266 is connected to power via USB, acting as a server to receive the message from the client, connect to Wi-Fi, and send the notification.",
-        "This version is more ideal for power saving, as the client ESP8266 doesn't need to be connected to Wi-Fi or handle notifications directly."
+        "A second breadboard prototype was developed using two ESP8266 modules. In this setup, one ESP8266 functions as a client attached to the medication bottle. Its sole responsibility is to detect the reed switch state and send a message to the server ESP8266 when the bottle is opened.",
+        "The server ESP8266, powered via USB, handles the more power-intensive tasks—receiving the message from the client, connecting to Wi-Fi, and sending the notification. This separation of responsibilities significantly improves power efficiency, as the client module avoids the high energy consumption associated with Wi-Fi connectivity and notification handling.",
+        "One small limitation of this setup is that both ESP-NOW and Wi-Fi operate on the same 2.4 GHz frequency and cannot run simultaneously. As a result, after receiving a message from the client, the server must temporarily disable ESP-NOW to connect to Wi-Fi and send the notification. While this works well for a single-client system, it could present challenges in a multi-client setup. If the server is connected to Wi-Fi and unable to receive ESP-NOW messages, communication from other clients may be missed.",
+        ],
+        images: [
+          {url: second_pro, description: "Second Prototype with two ESP8266"},
         ],
       },
       {
         title: "Alexa Integration", 
         bullets: [
-        "Created a DynamoDB table to store timestamps of medication bottle openings.",
-        "The server ESP8266 sends a REST API POST request to an AWS API Gateway, triggering a Lambda function that updates the database.",
-        "Developed an Alexa skill that allows users to ask ‘Have I taken my medication today?’ Alexa queries the database and provides a response based on the stored timestamps."
+          "I love using Alexa in my everyday life for simple yet impactful tasks like turning on lights and managing home security systems. This personal experience with voice assistants inspired me to integrate Alexa into my smart medication tracking system, aiming to make health management just as effortless and intuitive.",
+          "To enable this functionality, I created a DynamoDB table to store timestamps whenever the medication bottle is opened. When the server ESP8266 detects the event, it sends a REST API POST request to an AWS API Gateway endpoint. This triggers a Lambda function that records the timestamp in the DynamoDB table, ensuring the data is securely and accurately stored in real time.",
+          "Building on this foundation, I developed a custom Alexa skill that allows users to ask, “Have I taken my medication today?” When prompted, Alexa queries the DynamoDB table through another Lambda function, checks for the last recorded activity, and checks if the date matches the current date. This voice-enabled interaction adds convenience, especially for users who may forget whether they’ve taken their medication, reinforcing the system’s usefulness in daily routines.",
         ],
         images: [
           {url: aws_diagram, description: "AWS Diagram"},
+          {url: alexademo1, description: "Alexa Demo"},
+
         ],
       },
       {
         title: "Third Prototype - Perfboard with CR123A", 
-        bullets: ["The final version involved assembling all components on a perfboard with a CR123A battery.", 
-            "The hardest part was soldering, which required practice. ", 
-            "The client ESP8266 sends an ESP-NOW message to the server ESP8266, but battery life remains a concern."],
+        bullets: ["The final version of the project involved assembling all components onto a compact perfboard, powered by a CR123A battery. The most challenging part of the build was soldering, which took some practice to get used to.", 
+          "The system functioned as expected, but the battery drained in under 24 hours, which was a major concern. Several possibilities could explain this rapid drain: the deep sleep function may not have executed correctly, the circuit design might be flawed and causing a constant draw, or deep sleep is working but still consuming more power than anticipated.",
+          "Through further research, I discovered that the NodeMCU D1 Mini boards sometimes require two reset signals to fully reboot. I observed that when the magnet was removed from the reed switch, the board would reset inconsistently—sometimes it triggered a full reset, and other times it didn’t. It appears that the first reset may only wake the board without executing the setup() and loop() functions, while the second reset fully initializes the board. If only one reset is triggered, the board may stay awake without re-entering deep sleep, leading to significantly increased battery usage.",
+        ],
+        images: [
+          {url: third_pro2, description: ""},
+          {url: third_pro1, description: "Third Prototype on Perfboard"},
+        ],
+      },
+      {
+        title: "Next Step", 
+        bullets: [
+          "I plan to experiment with different circuit designs using a normally closed reed switch. In this setup, the reed switch will be placed between the battery and the 3.3V pin of the board. When the magnet is close, the reed switch remains open, completely cutting off power to the board. When the magnet moves away, the switch closes, allowing current to flow and turning the board on.",
+          "This design could be more efficient than using deep sleep since, in theory, it should consume no power when the bottle is closed. By fully cutting off power instead of relying on deep sleep mode, battery life could be significantly extended, making the system more practical for long-term use."
+        ]
         }
     ],
     videoDemo: "", 

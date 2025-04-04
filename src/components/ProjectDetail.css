@@ -125,21 +125,22 @@
     margin-bottom: 20px; 
     width: 100%;
     max-height: 800px;
+    align-items: center;
   }
   
   .section-image img {
-    max-width: 100%;  /* Ensures the image scales to fit the container */
-    height: auto;     /* Maintains the aspect ratio */
-    border-radius: 8px; /* Adds rounded corners to the image */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow to image */
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    max-width: 100%;  
+    height: auto; 
+    max-height: 400px;   
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; 
   }
   
-  /* Add a hover effect to scale the image slightly */
   .section-image img:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.05); 
   }
 
   .project-section p {
-    margin-bottom: 10px;  /* Adjust as needed */
+    margin-bottom: 10px;  
   }
