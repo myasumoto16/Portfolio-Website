@@ -31,7 +31,7 @@ function Projects() {
                   Repo
                 </a>
               ) : (
-                <span>Coming Soon</span>
+                <span></span>
               )}
               {project.demo && (
                 <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link-btn">
