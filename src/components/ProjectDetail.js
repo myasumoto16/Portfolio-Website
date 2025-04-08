@@ -36,12 +36,12 @@ function ProjectDetail({ projects }) {
       <div className="project-links">
         {project.repo && (
           <a href={project.repo} target="_blank" rel="noopener noreferrer" className="project-link">
-            View Repository
+            Repo
           </a>
         )}
         {project.demo && (
           <a href={project.demo} target="_blank" rel="noopener noreferrer" className="project-link">
-            View Demo
+            Demo
           </a>
         )}
       </div>

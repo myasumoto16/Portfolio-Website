@@ -241,7 +241,7 @@ function Craft() {
   
   const openProjectDetails = (project) => {
     setSelectedProject(project);
-    setCurrentImageIndex(0); // Reset to main image when opening a new project
+    setCurrentImageIndex(0);
   };
   
   const closeProjectDetails = () => {
@@ -271,7 +271,6 @@ function Craft() {
     };
   }, [selectedProject, handleKeyDown]);
   
-  // Function to set the thumbnail as the main image
   const setMainImage = (index) => {
     setCurrentImageIndex(index + 1);
   };
