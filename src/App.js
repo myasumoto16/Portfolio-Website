@@ -26,7 +26,7 @@ export const projects = [
     title: "Smart Medication Bottle 💊",
     description: "Smart medication bottle with built-in sensors that detects when it’s opened and sends users text or email notifications. It is also connected with Alexa for voice-based queries.",
     technologies: ["ESP8266", "C++", "AWS Lambda", "DynamoDB", "Alexa Skills", "IoT"],
-    repo: "",
+    repo: "https://github.com/myasumoto16/Smart-Medication-Bottle",
     demo: "",
     mainImage: "",
     fullDescription: "This project helps users maintain their medication schedule by detecting when the bottle is opened and sending alerts. It also integrates with Alexa to allow users to ask if they've taken their medication.",
