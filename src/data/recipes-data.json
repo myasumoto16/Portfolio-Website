@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "title": "Seafood Okonomiyaki",
+    "description": "A traditional Japanese savory pancake dish with seafood",
+    "image": "../assets/recipes/okonomi.PNG",
+    "prepTime": 5,
+    "cookTime": 25,
+    "servings": 3,
+    "difficulty": "Intermediate",
+    "ingredients": [
+      "Frozen Seafood: 300g",
+      "Cabbage: 300g",
+      "Eggs: 3",
+      "Dashi: 1 tbsp",
+      "Flour: 1 cup",
+      "Water: 1 cup",
+      "Okonomi Sauce",
+      "Seaweed flake",
+      "Japanese Mayo"
+    ],
+    "directions": [
+      "Defrost froze seafood in a salt water in a bowl.",
+      "In a large bowl, mix and whisk the flour, water and dashi well. Add the eggs and mix well",
+      "Chop cabbage into small pieces and add to the bowl.",
+      "Drain the salt water and add the seafood to the large bowl and mix well.",
+      "Pour 1 meal portion into a heated pan (about 3 scoops with a small scoop) and cook for 3 min",
+      "Flip the pancake, cover with a lid and cook for 3 min.",
+      "Serve on plate and pour okonomi sauce, Japanese mayo, seaweed flakes or any sauce of your choie"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "description": "A flavorful Indian curry dish with marinated chicken in a creamy tomato sauce.",
+    "image": "/api/placeholder/500/300",
+    "prepTime": 30,
+    "cookTime": 45,
+    "servings": 6,
+    "difficulty": "Intermediate",
+    "ingredients": [
+      "800g boneless chicken thighs, cut into chunks",
+      "1 cup plain yogurt",
+      "2 tbsp lemon juice",
+      "6 cloves garlic, minced",
+      "1 tbsp ginger, grated",
+      "2 tsp ground cumin",
+      "2 tsp ground turmeric",
+      "2 tsp garam masala",
+      "2 tsp paprika",
+      "1 large onion, finely chopped",
+      "3 tbsp vegetable oil",
+      "1 can (400g) tomato sauce",
+      "1 cup heavy cream",
+      "Fresh cilantro for garnish",
+      "Salt to taste"
+    ],
+    "directions": [
+      "In a bowl, combine yogurt, lemon juice, half the garlic, half the ginger, and half of each spice. Add chicken and marinate for at least 1 hour, preferably overnight.",
+      "Heat oil in a large pot over medium heat. Add onions and cook until soft, about 5 minutes.",
+      "Add remaining garlic and ginger, cook for 1 minute until fragrant.",
+      "Add remaining spices, stir for 30 seconds.",
+      "Add tomato sauce and bring to a simmer. Cook for 15 minutes.",
+      "Meanwhile, preheat grill or broiler. Thread chicken onto skewers and grill/broil until charred and cooked through, about 8 minutes per side.",
+      "Add grilled chicken to the sauce, then stir in cream. Simmer for 10 minutes.",
+      "Adjust salt to taste and garnish with fresh cilantro. Serve with rice or naan bread."
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Avocado Toast with Poached Egg",
+    "description": "A simple, nutritious breakfast that's ready in minutes.",
+    "image": "/api/placeholder/500/300",
+    "prepTime": 10,
+    "cookTime": 5,
+    "servings": 1,
+    "difficulty": "Easy",
+    "ingredients": [
+      "1 slice of sourdough bread",
+      "1/2 ripe avocado",
+      "1 fresh egg",
+      "1 tsp white vinegar",
+      "Red pepper flakes (optional)",
+      "Salt and pepper to taste",
+      "1 tbsp olive oil",
+      "Microgreens for garnish (optional)"
+    ],
+    "directions": [
+      "Toast the bread until golden and crispy.",
+      "While bread is toasting, bring a pot of water to a gentle simmer. Add white vinegar.",
+      "Crack the egg into a small cup. Create a gentle whirlpool in the simmering water and carefully slide the egg in. Cook for 3 minutes for a runny yolk.",
+      "Scoop out the poached egg with a slotted spoon and place on a paper towel.",
+      "Mash the avocado in a bowl with salt and pepper.",
+      "Spread the mashed avocado on the toast, top with the poached egg.",
+      "Drizzle with olive oil, sprinkle with red pepper flakes if using, and garnish with microgreens.",
+      "Serve immediately."
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Classic Chocolate Chip Cookies",
+    "description": "Soft and chewy cookies with melty chocolate chips, perfect for any occasion.",
+    "image": "/api/placeholder/500/300",
+    "prepTime": 15,
+    "cookTime": 12,
+    "servings": 24,
+    "difficulty": "Easy",
+    "ingredients": [
+      "2 1/4 cups all-purpose flour",
+      "1 tsp baking soda",
+      "1 tsp salt",
+      "1 cup unsalted butter, softened",
+      "3/4 cup granulated sugar",
+      "3/4 cup packed brown sugar",
+      "2 large eggs",
+      "2 tsp vanilla extract",
+      "2 cups semi-sweet chocolate chips"
+    ],
+    "directions": [
+      "Preheat oven to 375°F (190°C). Line baking sheets with parchment paper.",
+      "In a small bowl, whisk together the flour, baking soda, and salt.",
+      "In a large bowl, beat butter and both sugars until creamy.",
+      "Add eggs one at a time, beating well after each addition. Stir in vanilla.",
+      "Gradually add flour mixture until just combined. Stir in chocolate chips.",
+      "Drop rounded tablespoons of dough onto prepared baking sheets, spacing them 2 inches apart.",
+      "Bake for 9-12 minutes or until edges are golden but centers are still soft.",
+      "Let cookies cool on baking sheets for 2 minutes, then transfer to wire racks to cool completely."
+    ]
+  }
+]

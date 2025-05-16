@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Whiskers",
+    "age": 3,
+    "image": "/api/placeholder/500/500",
+    "description": "Whiskers is a playful tabby who loves chasing laser pointers and sleeping in sunny spots."
+  },
+  {
+    "id": 2,
+    "name": "Luna",
+    "age": 5,
+    "image": "/api/placeholder/500/500",
+    "description": "Luna is a majestic black cat with green eyes. She's the queen of the house and knows it!"
+  },
+  {
+    "id": 3,
+    "name": "Oliver",
+    "age": 2,
+    "image": "/api/placeholder/500/500",
+    "description": "Oliver is an orange tabby who can't get enough treats. He's always hungry and very vocal about it."
+  },
+  {
+    "id": 4,
+    "name": "Bella",
+    "age": 4,
+    "image": "/api/placeholder/500/500",
+    "description": "Bella is a gentle calico who loves to curl up in laps and purr for hours."
+  },
+  {
+    "id": 5,
+    "name": "Max",
+    "age": 1,
+    "image": "/api/placeholder/500/500",
+    "description": "Max is our newest family member, a tuxedo kitten with endless energy and curiosity."
+  },
+  {
+    "id": 6,
+    "name": "Sophie",
+    "age": 7,
+    "image": "/api/placeholder/500/500",
+    "description": "Sophie is a wise Siamese who prefers quiet meditation spots and occasional gentle pets."
+  },
+  {
+    "id": 7,
+    "name": "Milo",
+    "age": 3,
+    "image": "/api/placeholder/500/500",
+    "description": "Milo is a gray tabby who's obsessed with watching birds through the window."
+  },
+  {
+    "id": 8,
+    "name": "Daisy",
+    "age": 6,
+    "image": "/api/placeholder/500/500",
+    "description": "Daisy is a fluffy Maine Coon mix who loves to be brushed and pampered."
+  }
+]
