@@ -54,6 +54,11 @@ function Navbar() {
                   Craft
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/other/recipes" className={({ isActive }) => isActive ? 'active' : ''}>
+                  Recipes
+                </NavLink>
+              </li>
               {/* <li>
                 <NavLink to="/other/cooking" className={({ isActive }) => isActive ? 'active' : ''}>
                   Cooking

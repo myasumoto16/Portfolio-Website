@@ -1,0 +1,124 @@
+[
+  {
+    "id": 1,
+    "title": "Seafood Okonomiyaki",
+    "description": "A traditional Japanese savory pancake dish with seafood!",
+    "image": "../assets/recipes/okonomi.PNG",
+    "prepTime": 5,
+    "cookTime": 25,
+    "servings": 3,
+    "difficulty": "Intermediate",
+    "ingredients": [
+      "Frozen Seafood: 300g",
+      "Cabbage: 300g",
+      "Eggs: 3",
+      "Dashi: 1 tbsp",
+      "Flour: 1 cup",
+      "Water: 1 cup",
+      "Okonomi Sauce",
+      "Seaweed flake",
+      "Japanese Mayo"
+    ],
+    "directions": [
+      "Defrost froze seafood in a salt water (2 cup water, 2 tbsp salt) in a bowl.",
+      "In a large bowl, mix and whisk the flour, water and dashi well. Add the eggs and mix well",
+      "Chop the cabbage into small pieces and add to the bowl.",
+      "Drain the salt water and add the seafood to the large bowl and mix well.",
+      "Pour 1 meal portion into a heated pan (about 3 scoops with a small scoop) and cook for 3 min on medium heat",
+      "Flip the pancake, cover with a lid and cook for 3 min.",
+      "Serve on plate and pour okonomi sauce, Japanese mayo, seaweed flakes or any sauce of your choie"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Karaage: Japanese Fried Chicken",
+    "description": "Simple Japanese fried chicken!",
+    "image": "/api/placeholder/500/300",
+    "prepTime": 45,
+    "cookTime": 15,
+    "servings": 3,
+    "difficulty": "Advanced",
+    "ingredients": [
+      "Chicken Thigh: 1lbs (450g)",
+      "Japanese Mayo: 1 tbsp",
+      "Dashi (Shiro): 1 tbsp",
+      "Men Tsuyu (Noodle Soup Base Concentrated): 1 tbsp",
+      "Potato or Corn Starch: 3 tbsp", 
+      "Vegetable Oil"
+    ],
+    "directions": [
+      "Prepare a big zipclock bag. Cut the chicken into bite-sized pieces and place them into the bag",
+      "Add the Dashi, Men Tsuyu, and Japanese Mayo to the bag and squeeze/mix the bag for 1 min. Leave in room temperature for 30 min",
+      "Add the potato starch to the bag and squeeze the bag well.",
+      "Prepare a medium size pot. Pour enough oil to cover the bottom and some more. Heat up the oil to 180C/355F (medium high heat for 5~7 min)",
+      "Place 5~8 chicken pieces into the pot. Cook on one side for 2 min. Try to keep the temperature close to 170C/340F",
+      "Flip the chicken pieces and cook for another 2 min. Occassionally flip the chickens at the end of the timer",
+      "Remove the chicken pieces and place them in a plate with paper towels on it and let it cool for at least 1 min",
+      "Serve with rice, broccoli, miso soup or any side dish of your choice. Feel free to add salt, pepper, lemon or Japanese mayo to the chicken"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Salmon Poke",
+    "description": "A simple and quick Poke recipe!",
+    "image": "",
+    "prepTime": 0,
+    "cookTime": 20,
+    "servings": 3,
+    "difficulty": "Easy",
+    "ingredients": [
+      "Salmon Sashimi: 150g", 
+      "Tamago Yaki or Another Sashimi: 150g", 
+      "Avocado: 2",
+      "Onion: 1/2", 
+      "Garlic: 1", 
+      "Soy Sauce: 1 tbsp", 
+      "Oyster Sauce: `1 tbsp", 
+      "Ajinomoto or Salt: 5 shakes", 
+      "Wasabi tube: 15 cm", 
+      "Sesame seeds", 
+      "White Rice"
+    ],
+    "directions": [
+      "Start cooking the rice.",
+      "Prepare a large bowl. Dice the sashimi, tamago, onions, and avocado into cubes and add them to the bowl.",
+      "Add minced garlic, soy sauce, oyster, sauce, ajinomoto, wasabi, sesame seeds to the bowl and mix well.",
+      "Serve over rice and enjoy!"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Lu Rou Fan",
+    "description": "Delicious Taiwanese Braised Pork Rice Bowl!",
+    "image": "",
+    "prepTime": 10,
+    "cookTime": 60,
+    "servings": 3,
+    "difficulty": "Intermediate",
+    "ingredients": [
+      "Pork belly block: 1 lbs",
+      "Egg: 3",
+      "Onion: 1/2",
+      "Garlic: 3",
+      "Water: 300cc",
+      "Soy Sauce: 4 tbsp",
+      "Cooking Sake: 3 tbsp",
+      "Chinese seasoning paste/Chicken chicken bouillon: 1/2 tsp",
+      "Oyster sauce: 1 tbsp",
+      "Five-spice powder: 1/2 tsp",
+      "Bok Choy: 1",
+      "Black pepper",
+      "White Rice"
+    ],
+    "directions": [
+      "Cook eggs in boiling water for 10 min. Soak in water and remove the shells.",
+      "Slice the onions, cut each bok choy leaves into 4 pieces, mince the garlic, and dice the pork into small cubes",
+      "Start cooking the rice.",
+      "Cook the onions in a pan with oil and salt until brown. Add the pork and cook on high heat until the surfaces are brown.", 
+      "Add the garlic and cook on medium heat for 1 min", 
+      "Add water, soy suace, sake, paste, oyster sauce, five-spice, boiled eggs to the pan and cook on low-mid heat for 30~40 min.",
+      "While the pork is cooking, cook the boy choy in boiling water for 30 seconds.",
+      "Slice the eggs in half, serve the pork, eggs, bok choy over rice. Pour the sauce from the pan on top."
+    ]
+  }
+]

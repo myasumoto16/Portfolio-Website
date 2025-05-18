@@ -9,6 +9,8 @@ import Contact from './components/Contact';
 import Craft from './components/Craft';
 import Footer from './components/Footer';
 import ProjectDetail from './components/ProjectDetail';
+import Recipes from './components/Recipes';
+import RecipeDetails from './components/RecipeDetails';
 import aws_diagram from "./assets/projects/AWS_Diagram.jpeg";
 import intial_circuit from "./assets/projects/Schematic_Smart-Medication-Bottle_2025-04-03.png";
 import first_pro from "./assets/projects/first-proto.jpeg";
@@ -17,6 +19,11 @@ import third_pro1 from "./assets/projects/third-proto-1.jpg";
 import third_pro2 from "./assets/projects/third-proto-2.jpeg";
 import alexademo1 from "./assets/projects/alexa1.PNG";
 import emaildemo from "./assets/projects/email.PNG";
+import recipes from "./data/recipes-data.json";
+import okonomiImage from './assets/recipes/okonomi.jpg'
+import karaageImage from './assets/recipes/karaage.jpg'
+import pokeImage from './assets/recipes/poke.jpg'
+import luroufan from './assets/recipes/luroufan.jpg'
 
 import './App.css';
 
@@ -162,6 +169,13 @@ export const projects = [
   }
 ];
 
+const recipe_data = recipes;
+const images = [okonomiImage, karaageImage, pokeImage, luroufan];
+
+for (var i = 0; i < images.length; i++) {
+  recipes[i].image = images[i];
+}
+
 function App() {
   return (
     <Router>
@@ -177,6 +191,8 @@ function App() {
             <Route path="/music" element={<Music />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/other/craft" element={<Craft />} />
+            <Route path="/other/recipes" element={<Recipes />} />
+            <Route path="/other/recipes/:recipeId" element={<RecipeDetails recipes={recipe_data} />} />
             {/* 
             <Route path="/other/cooking" element={<Cooking />} />
             <Route path="/other/baking" element={<Baking />} /> 
