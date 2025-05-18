@@ -47,7 +47,7 @@ function Recipes() {
             <h3>{recipe.title}</h3>
             <p>{recipe.description}</p>
             <div className="recipe-details">
-              <span className="prep-time">{recipe.prepTime} min</span>
+              <span className="prep-time">{recipe.prepTime + recipe.cookTime} min</span>
               <span className="difficulty">{recipe.difficulty}</span>
             </div>
           </div>

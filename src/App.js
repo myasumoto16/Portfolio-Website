@@ -20,6 +20,10 @@ import third_pro2 from "./assets/projects/third-proto-2.jpeg";
 import alexademo1 from "./assets/projects/alexa1.PNG";
 import emaildemo from "./assets/projects/email.PNG";
 import recipes from "./data/recipes-data.json";
+import okonomiImage from './assets/recipes/okonomi.jpg'
+import karaageImage from './assets/recipes/karaage.jpg'
+import pokeImage from './assets/recipes/poke.jpg'
+import luroufan from './assets/recipes/luroufan.jpg'
 
 import './App.css';
 
@@ -166,6 +170,11 @@ export const projects = [
 ];
 
 const recipe_data = recipes;
+const images = [okonomiImage, karaageImage, pokeImage, luroufan];
+
+for (var i = 0; i < images.length; i++) {
+  recipes[i].image = images[i];
+}
 
 function App() {
   return (

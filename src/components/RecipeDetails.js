@@ -6,7 +6,7 @@ function RecipeDetails({recipes}) {
   const { recipeId } = useParams();
   const navigate = useNavigate();
 
-  const recipe = Array.isArray(recipes) ? recipes.find((p) => toString(p.id) === toString(recipeId)) : null;
+  const recipe = recipes[recipeId - 1];
 
   if (!recipe) {
     return (
@@ -16,7 +16,7 @@ function RecipeDetails({recipes}) {
       </div>
     );
   }
-
+  
   const handleBack = () => {
     navigate('/other/recipes');
   };
@@ -55,14 +55,23 @@ function RecipeDetails({recipes}) {
       </div>
       
       <div className="recipe-content">
-        <div className="ingredients-section">
-          <h2>Ingredients</h2>
-          <ul className="ingredients-list">
-            {recipe.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
-        </div>
+      <div className="ingredients-section">
+        <h2>Ingredients</h2>
+        <table className="ingredients-table">
+          <tbody>
+            {recipe.ingredients.map((ingredient, index) => {
+              const [name, amount] = ingredient.split(/:(.+)/); // Split at the first colon
+              return (
+                <tr key={index}>
+                  <td className="ingredient-name">{name.trim()}</td>
+                  <td className="ingredient-amount">{amount ? amount.trim() : ''}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
         
         <div className="directions-section">
           <h2>Directions</h2>
