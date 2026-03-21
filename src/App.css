@@ -1,3 +1,89 @@
+/* ============================================================
+   Design Tokens — light mode (default)
+   ============================================================ */
+:root {
+  /* Colors */
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --color-primary: #0f172a;
+  --color-text: #334155;
+  --color-muted: #64748b;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-border: #e2e8f0;
+
+  /* Nav/footer always-dark surface */
+  --bg-nav: #0f172a;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing (0.25rem increments) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-9: 2.25rem;
+  --space-10: 2.5rem;
+}
+
+/* ============================================================
+   Dark mode overrides
+   ============================================================ */
+[data-theme='dark'] {
+  --bg-page: #0f172a;
+  --bg-card: #1e293b;
+  --bg-subtle: #1e293b;
+  --color-primary: #f8fafc;
+  --color-text: #cbd5e1;
+  --color-muted: #64748b;
+  --color-accent: #60a5fa;
+  --color-accent-hover: #93c5fd;
+  --color-border: #334155;
+  --bg-nav: #0f172a;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   Scroll animation classes
+   ============================================================ */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for grid children */
+.animate-on-scroll:nth-child(2) { transition-delay: 0.05s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.1s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.15s; }
+.animate-on-scroll:nth-child(5) { transition-delay: 0.2s; }
+.animate-on-scroll:nth-child(6) { transition-delay: 0.25s; }
+
+/* ============================================================
+   Global base styles
+   ============================================================ */
 * {
   margin: 0;
   padding: 0;
@@ -5,10 +91,10 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.6;
-  color: #333;
-  background-color: #f8f9fa;
+  color: var(--color-text);
+  background-color: var(--bg-page);
 }
 
 .App {
@@ -19,33 +105,21 @@ body {
 
 main {
   flex: 1;
-  padding: 2rem;
+  padding: var(--space-8);
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
 
 section {
-  margin-bottom: 2rem;
-  animation: fadeIn 0.5s ease-in;
+  margin-bottom: var(--space-8);
 }
 
 h2 {
   font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: #2c3e50;
+  margin-bottom: var(--space-6);
+  color: var(--color-primary);
   text-align: center;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 button {
@@ -58,9 +132,64 @@ button {
 
 a {
   text-decoration: none;
-  color: #3498db;
+  color: var(--color-accent);
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+/* Shared button styles */
+.btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border: 2px solid var(--color-accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  box-shadow: var(--shadow-md);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  animation: fadeIn 0.4s ease-in;
 }
