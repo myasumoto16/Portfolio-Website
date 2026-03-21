@@ -4,7 +4,8 @@
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, var(--bg-page) 0%, var(--bg-subtle) 100%);
+  background-color: var(--bg-page);
+  background-image: linear-gradient(160deg, var(--bg-page) 0%, var(--bg-subtle) 100%);
   padding: 5rem var(--space-8) 4.5rem;
   margin: calc(-1 * var(--space-8));
   margin-bottom: 0;
@@ -82,24 +83,26 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow:
-    0 0 0 3px var(--color-accent),
-    0 20px 60px rgba(59, 130, 246, 0.18),
-    var(--shadow-md);
+    0 0 0 0.5px var(--color-accent),
+    0 8px 32px rgba(0, 0, 0, 0.15);
   animation: fadeInUp 0.5s ease 0.1s both;
+}
+
+[data-theme='dark'] .hero {
+  background-image: none;
 }
 
 [data-theme='dark'] .hero-photo {
   box-shadow:
-    0 0 0 3px var(--color-accent),
-    0 20px 60px rgba(96, 165, 250, 0.22),
-    var(--shadow-md);
+    0 0 0 0.5px var(--color-accent),
+    0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 .hero-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: 55% top;
   display: block;
 }
 

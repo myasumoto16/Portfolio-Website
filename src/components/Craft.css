@@ -27,6 +27,8 @@
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   cursor: pointer;
   background-color: var(--bg-card);
+  display: flex;
+  flex-direction: column;
 }
 
 .craft-card:hover {
@@ -35,7 +37,7 @@
 }
 
 .craft-image-container {
-  height: 340px;
+  height: 380px;
   overflow: hidden;
 }
 
@@ -52,6 +54,9 @@
 
 .craft-info {
   padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .craft-info h3 {
@@ -65,6 +70,7 @@
   margin-bottom: var(--space-4);
   color: var(--color-muted);
   font-size: 0.875rem;
+  flex: 1;
 }
 
 .view-more-btn {
