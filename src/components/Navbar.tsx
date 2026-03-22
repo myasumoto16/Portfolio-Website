@@ -44,6 +44,16 @@ const Navbar: React.FC = () => {
               Music
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                isActive || location.pathname.startsWith('/blog/') ? 'active' : ''
+              }
+            >
+              Blog
+            </NavLink>
+          </li>
           <li className={`dropdown-container${isOtherActive ? ' active' : ''}`}>
             <button className="dropdown-trigger" onClick={handleOtherClick}>
               Other

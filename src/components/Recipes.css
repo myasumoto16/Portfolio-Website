@@ -55,7 +55,7 @@
 }
 
 .recipe-image {
-  height: 180px;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 

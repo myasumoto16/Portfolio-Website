@@ -17,6 +17,12 @@ import Footer from './components/Footer';
 import ProjectDetail from './components/ProjectDetail';
 import Recipes from './components/Recipes';
 import RecipeDetails from './components/RecipeDetails';
+import Blog from './components/Blog';
+import BlogPost from './components/BlogPost';
+import AdminLogin from './components/admin/AdminLogin';
+import AdminDashboard from './components/admin/AdminDashboard';
+import AdminEditor from './components/admin/AdminEditor';
+import ProtectedRoute from './components/admin/ProtectedRoute';
 import { recipesWithImages } from './data/recipesWithImages';
 import aws_diagram from './assets/projects/AWS_Diagram.jpeg';
 import intial_circuit from './assets/projects/Schematic_Smart-Medication-Bottle_2025-04-03.png';
@@ -213,6 +219,12 @@ function App() {
             <Route path="/other/craft" element={<Craft />} />
             <Route path="/other/recipes" element={<Recipes recipes={recipesWithImages} />} />
             <Route path="/other/recipes/:recipeId" element={<RecipeDetails recipes={recipesWithImages} />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+            <Route path="/admin/new" element={<ProtectedRoute><AdminEditor /></ProtectedRoute>} />
+            <Route path="/admin/edit/:id" element={<ProtectedRoute><AdminEditor /></ProtectedRoute>} />
             <Route path="*" element={<Navigate to="/about" replace />} />
           </Routes>
         </main>
