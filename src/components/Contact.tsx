@@ -2,68 +2,44 @@ import React, { useState, useRef } from 'react';
 import './Contact.css';
 import emailjs from '@emailjs/browser';
 
-function Contact() {
-  const form = useRef();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  
-  const [formStatus, setFormStatus] = useState({
-    submitted: false,
-    error: false,
-    message: ''
-  });
-
+const Contact: React.FC = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formStatus, setFormStatus] = useState({ submitted: false, error: false, message: '' });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    console.log(process.env.EMAILJS_SERVICE_ID);
-
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!form.current) return;
     setIsLoading(true);
 
-    // EmailJS service
-    emailjs.sendForm(
-      process.env.REACT_APP_EMAILJS_SERVICE_ID,
-      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-      form.current,
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-        )
-      .then((result) => {
-        console.log('Email sent successfully:', result.text);
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID as string,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string
+      )
+      .then(() => {
         setFormStatus({
           submitted: true,
           error: false,
-          message: 'Thank you for your message! I\'ll get back to you soon.'
+          message: "Thank you for your message! I'll get back to you soon.",
         });
-        
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          message: ''
-        });
+        setFormData({ name: '', email: '', message: '' });
       })
-      .catch((error) => {
-        console.error('Failed to send email:', error.text);
+      .catch(() => {
         setFormStatus({
           submitted: true,
           error: true,
-          message: 'Oops! Something went wrong. Please try again or contact me directly at yasumotom98@gmail.com'
+          message: 'Oops! Something went wrong. Please try again or contact me directly at yasumotom98@gmail.com',
         });
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -81,7 +57,7 @@ function Contact() {
         </div>
         <div className="contact-form">
           {formStatus.submitted ? (
-            <div className={formStatus.error ? "error-message" : "success-message"}>
+            <div className={formStatus.error ? 'error-message' : 'success-message'}>
               <p>{formStatus.message}</p>
             </div>
           ) : (
@@ -116,13 +92,9 @@ function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                ></textarea>
+                />
               </div>
-              <button 
-                type="submit" 
-                className="submit-btn" 
-                disabled={isLoading}
-              >
+              <button type="submit" className="submit-btn" disabled={isLoading}>
                 {isLoading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
@@ -131,6 +103,6 @@ function Contact() {
       </div>
     </section>
   );
-}
+};
 
 export default Contact;

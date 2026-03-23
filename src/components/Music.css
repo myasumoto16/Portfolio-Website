@@ -1,215 +1,133 @@
 .music-section {
-    padding: 2rem 0;
-  }
-  
-  .music-intro {
-    max-width: 800px;
-    margin: 0 auto 2rem;
-  }
-  
-  .music-intro p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-  }
-  
-  .music-subsection-title {
-    font-size: 1.5rem;
-    color: #2c3e50;
-    margin: 2rem 0 1.5rem;
-    text-align: left;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .music-projects {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .music-project-card {
-    display: flex;
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-  }
-  
-  .music-project-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .music-project-image {
-    flex: 1;
-    min-width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-  }
-  
-  .album-cover-placeholder {
-    width: 180px;
-    height: 180px;
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .music-project-info {
-    flex: 2;
-    padding: 1.5rem;
-  }
-  
-  .music-project-info h4 {
-    font-size: 1.3rem;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-  }
-  
-  .music-year {
-    color: #7f8c8d;
-    font-style: italic;
-    margin-bottom: 1rem;
-  }
-  
-  .music-description {
-    margin-bottom: 1rem;
-    color: #555;
-  }
-  
-  .music-platforms ul {
-    display: flex;
-    list-style: none;
-    gap: 1rem;
-    margin-top: 0.5rem;
-  }
-  
-  .music-platforms li {
-    background-color: #3498db;
-    color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-  }
-  
+  padding: var(--space-8) 0;
+}
+
+.music-intro {
+  max-width: 800px;
+  margin: 0 auto var(--space-8);
+}
+
+.music-intro p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+}
+
+.music-subsection-title {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin: var(--space-8) auto var(--space-6);
+  text-align: left;
+  max-width: 800px;
+  font-weight: 600;
+}
+
+.music-videos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.video-container {
+  background-color: var(--bg-card);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  width: 100%;
+  transition: box-shadow var(--transition-fast);
+}
+
+.video-container:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.video-embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.video-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-info {
+  padding: var(--space-6);
+  width: 100%;
+}
+
+.video-info h4 {
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.video-date {
+  color: var(--color-muted);
+  font-style: italic;
+  margin-bottom: var(--space-2);
+  font-size: 0.875rem;
+}
+
+.video-description {
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.music-cta {
+  max-width: 800px;
+  margin: var(--space-10) auto 0;
+  text-align: center;
+  background-color: var(--bg-subtle);
+  padding: var(--space-8);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.music-cta h3 {
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+  font-weight: 600;
+}
+
+.music-cta p {
+  margin-bottom: var(--space-6);
+  color: var(--color-text);
+}
+
+.music-contact-btn {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  padding: var(--space-3) var(--space-6);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.music-contact-btn:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
   .music-videos {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 100%;
-    width: 100%;
-    padding: 0 1rem;
-    box-sizing: border-box;
+    padding: 0;
   }
-  
-  .video-container {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .video-embed {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .video-embed iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-  
-  .video-info {
-    padding: 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .video-info h4 {
-    font-size: 1.2rem;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
-    word-wrap: break-word;
-  }
-  
-  .video-date {
-    color: #7f8c8d;
-    font-style: italic;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .video-description {
-    color: #555;
-    font-size: 1rem;
-  }
-  
-  
-  .music-cta {
-    max-width: 800px;
-    margin: 3rem auto 0;
-    text-align: center;
-    background-color: #f8f9fa;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .music-cta h3 {
-    color: #2c3e50;
-    margin-bottom: 1rem;
-  }
-  
-  .music-cta p {
-    margin-bottom: 1.5rem;
-    color: #555;
-  }
-  
-  .music-contact-btn {
-    background-color: #3498db;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  .music-contact-btn:hover {
-    background-color: #2980b9;
-  }
-  
-  @media (max-width: 768px) {
-    .music-project-card {
-      flex-direction: column;
-    }
-    
-    .music-project-image {
-      padding: 1.5rem 1.5rem 0;
-    }
-    
-    .video-placeholder {
-      height: 250px;
-    }
-    
-    .music-platforms ul {
-      flex-wrap: wrap;
-    }
-  }
+}
