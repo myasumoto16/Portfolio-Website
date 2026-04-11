@@ -12,7 +12,7 @@ function ProjectCard({ project }: { project: (typeof projects)[number] }) {
     <div
       ref={ref}
       className={`project-card animate-on-scroll${visible ? ' visible' : ''}`}
-      onClick={project.intro ? () => navigate(`/projects/${project.id}`) : undefined}
+      onClick={project.detail ? () => navigate(`/projects/${project.id}`) : undefined}
     >
       <h3>{project.title}</h3>
       <p>{project.description}</p>

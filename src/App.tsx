@@ -15,6 +15,7 @@ import Contact from './components/Contact';
 import Craft from './components/Craft';
 import Footer from './components/Footer';
 import ProjectDetail from './components/ProjectDetail';
+import NudgePage from './components/NudgePage';
 import Recipes from './components/Recipes';
 import RecipeDetails from './components/RecipeDetails';
 import Blog from './components/Blog';
@@ -37,6 +38,20 @@ import { Project } from './types';
 import './App.css';
 
 export const projects: Project[] = [
+  {
+    id: 'nudge',
+    title: 'Nudge',
+    description:
+      'Alexa skill that turns Google Calendar events into spoken Echo reminders and keeps them aligned through background sync plus an Echo quiet-sync routine.',
+    technologies: ['Alexa Skills Kit', 'AWS Lambda', 'DynamoDB', 'Google Calendar API', 'OAuth 2.0'],
+    repo: 'https://github.com/myasumoto16/AlexaAnnouncer',
+    demo: '',
+    detail: true,
+    intro: [
+      'Nudge is a reminder-first Alexa skill that bridges Google Calendar and spoken Echo reminders.',
+      'It creates reminders during an active sync, then keeps existing reminders updated or deleted when calendar events change.',
+    ],
+  },
   {
     id: 'smartmusicsheet',
     title: 'Smart Music Sheet 🎼',
@@ -213,6 +228,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/nudge" element={<NudgePage />} />
+            <Route path="/projects/nudge/privacy" element={<NudgePage variant="privacy" />} />
+            <Route path="/projects/nudge/support" element={<NudgePage variant="support" />} />
             <Route path="/projects/:projectId" element={<ProjectDetail projects={projects} />} />
             <Route path="/music" element={<Music />} />
             <Route path="/contact" element={<Contact />} />

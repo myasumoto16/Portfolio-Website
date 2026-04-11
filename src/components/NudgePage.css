@@ -1,0 +1,24 @@
+.nudge-page .project-section code {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.05rem 0.35rem;
+  font-size: 0.85em;
+}
+
+.nudge-nav-links {
+  flex-wrap: wrap;
+}
+
+.nudge-link-active {
+  background-color: var(--color-accent-hover);
+}
+
+.nudge-inline-links {
+  list-style: none;
+  padding-left: 0;
+}
+
+.nudge-inline-links li {
+  margin-bottom: var(--space-3);
+}
