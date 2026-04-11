@@ -152,7 +152,7 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
               <ul>
                 <li>Nudge keeps data only as long as needed to operate calendar sync and reminder maintenance.</li>
                 <li>Users can say “Alexa, ask my nudge to delete my data” to remove Nudge-owned sync records, reminder mappings, and calendar watch metadata.</li>
-                <li>Users should also unlink Nudge in the Alexa app if they want to revoke Google account access through account linking.</li>
+                <li>Users should also unlink Nudge or disable the skill in the Alexa app if they want to revoke Google account access through account linking.</li>
               </ul>
             </section>
 
@@ -192,7 +192,7 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
               <ul>
                 <li>Say “Alexa, ask my nudge to delete my data.”</li>
                 <li>This removes Nudge-owned sync records, reminder mappings, and calendar watch metadata.</li>
-                <li>If you also want to revoke Google account access, unlink Nudge in the Alexa app.</li>
+                <li>If you also want to revoke Google account access, unlink Nudge or disable the skill in the Alexa app.</li>
               </ul>
             </section>
 
