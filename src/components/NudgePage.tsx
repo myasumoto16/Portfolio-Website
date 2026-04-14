@@ -83,9 +83,9 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
               <h2>Recommended Setup</h2>
               <ul>
                 <li>Enable Nudge in Alexa and link the Google account that owns the calendar.</li>
-                <li>Say “Alexa, ask my nudge to sync my calendar.”</li>
+                <li>Say “Alexa, ask nudge to sync my calendar.”</li>
                 <li>Create one Echo routine with quiet refreshes at 7 AM, 11 AM, 3 PM, 7 PM, and 11 PM.</li>
-                <li>Use the exact routine command: “ask my nudge to run quiet sync.”</li>
+                <li>Use the exact routine command: “ask nudge to run quiet sync.”</li>
               </ul>
             </section>
 
@@ -151,7 +151,7 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
               <h2>Data Retention and Deletion</h2>
               <ul>
                 <li>Nudge keeps data only as long as needed to operate calendar sync and reminder maintenance.</li>
-                <li>Users can say “Alexa, ask my nudge to delete my data” to remove Nudge-owned sync records, reminder mappings, and calendar watch metadata.</li>
+                <li>Users can say “Alexa, ask nudge to delete my data” to remove Nudge-owned sync records, reminder mappings, and calendar watch metadata.</li>
                 <li>Users should also unlink Nudge or disable the skill in the Alexa app if they want to revoke Google account access through account linking.</li>
               </ul>
             </section>
@@ -172,8 +172,8 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
               <ul>
                 <li>Enable Nudge in the Alexa app.</li>
                 <li>Link the Google account that owns the calendar.</li>
-                <li>Say “Alexa, ask my nudge to sync my calendar.”</li>
-                <li>Create one Echo routine that runs “ask my nudge to run quiet sync” at 7 AM, 11 AM, 3 PM, 7 PM, and 11 PM.</li>
+                <li>Say “Alexa, ask nudge to sync my calendar.”</li>
+                <li>Create one Echo routine that runs “ask nudge to run quiet sync” at 7 AM, 11 AM, 3 PM, 7 PM, and 11 PM.</li>
               </ul>
             </section>
 
@@ -190,7 +190,7 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
             <section className="project-section">
               <h2>Delete My Data</h2>
               <ul>
-                <li>Say “Alexa, ask my nudge to delete my data.”</li>
+                <li>Say “Alexa, ask nudge to delete my data.”</li>
                 <li>This removes Nudge-owned sync records, reminder mappings, and calendar watch metadata.</li>
                 <li>If you also want to revoke Google account access, unlink Nudge or disable the skill in the Alexa app.</li>
               </ul>
