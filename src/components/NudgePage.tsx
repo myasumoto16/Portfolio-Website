@@ -65,6 +65,7 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
                 <li>Nudge turns Google Calendar events into spoken Alexa reminders.</li>
                 <li>After one-time setup, an Echo routine can keep new events refreshed automatically.</li>
                 <li>Existing reminders update or delete when calendar events change.</li>
+                <li>Nudge is developed and operated by Masakazu Yasumoto.</li>
               </ul>
             </section>
 
@@ -103,6 +104,9 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
                 <li>
                   <Link to="/projects/nudge/support">Support</Link>
                 </li>
+                <li>
+                  <a href="mailto:yasumotom98@gmail.com">Contact</a>
+                </li>
               </ul>
             </section>
           </>
@@ -114,6 +118,7 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
               <h2>Summary</h2>
               <ul>
                 <li>Nudge uses Google Calendar data and Alexa account data only to create and maintain Alexa reminders tied to a user’s calendar events.</li>
+                <li>Nudge is developed and operated by Masakazu Yasumoto.</li>
               </ul>
             </section>
 
@@ -144,6 +149,17 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
                 <li>Create Alexa reminders from Google Calendar events.</li>
                 <li>Update or delete existing reminders when calendar events change.</li>
                 <li>Avoid duplicate reminders and maintain Google Calendar sync state.</li>
+                <li>Use Google Calendar read-only data only to provide Nudge functionality requested by the user.</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Sharing and Google User Data</h2>
+              <ul>
+                <li>Nudge does not sell Google user data.</li>
+                <li>Nudge does not use Google user data for advertising.</li>
+                <li>Nudge does not use Google user data to train generalized AI or machine learning models.</li>
+                <li>Nudge does not share Google user data with third parties except when required to operate the service, such as communicating with Google Calendar APIs, Alexa services, and AWS infrastructure used by Nudge.</li>
               </ul>
             </section>
 
