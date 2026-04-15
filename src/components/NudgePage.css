@@ -22,3 +22,11 @@
 .nudge-inline-links li {
   margin-bottom: var(--space-3);
 }
+
+.nudge-step-list {
+  padding-left: 1.25rem;
+}
+
+.nudge-step-list li {
+  margin-bottom: var(--space-3);
+}

@@ -91,6 +91,39 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
             </section>
 
             <section className="project-section">
+              <h2>How To Use Nudge</h2>
+              <ol className="nudge-step-list">
+                <li>Enable Nudge in the Alexa app.</li>
+                <li>Link the Google account that owns the calendar.</li>
+                <li>Run the first sync: “Alexa, ask nudge to sync my calendar.”</li>
+                <li>Check the Alexa app to confirm reminders were created.</li>
+                <li>Create one Echo routine that runs “ask nudge to run quiet sync” during the day.</li>
+                <li>Move or delete a Google Calendar event to confirm the matching Alexa reminder updates.</li>
+              </ol>
+            </section>
+
+            <section className="project-section">
+              <h2>Demo Flow</h2>
+              <ul>
+                <li>Google Calendar event → Nudge sync → Alexa reminder.</li>
+                <li>Google Calendar event update → existing Alexa reminder update.</li>
+                <li>Google Calendar event deletion or <code>#silent</code> tag → Alexa reminder removal.</li>
+                <li>Echo routine quiet sync → new events picked up without a spoken success response.</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Screenshot Checklist</h2>
+              <ul>
+                <li>Alexa app account-linking screen for Nudge.</li>
+                <li>Google consent screen showing Calendar read-only access.</li>
+                <li>Example Google Calendar event used for testing.</li>
+                <li>Alexa reminder created from that calendar event.</li>
+                <li>Echo routine action using “ask nudge to run quiet sync.”</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
               <h2>Links</h2>
               <ul className="nudge-inline-links">
                 <li>
@@ -180,11 +213,34 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
           <>
             <section className="project-section">
               <h2>Getting Started</h2>
-              <ul>
+              <ol className="nudge-step-list">
                 <li>Enable Nudge in the Alexa app.</li>
                 <li>Link the Google account that owns the calendar.</li>
                 <li>Say “Alexa, ask nudge to sync my calendar.”</li>
                 <li>Create one Echo routine that runs “ask nudge to run quiet sync” at 7 AM, 11 AM, 3 PM, 7 PM, and 11 PM.</li>
+              </ol>
+            </section>
+
+            <section className="project-section">
+              <h2>Routine Instructions</h2>
+              <ol className="nudge-step-list">
+                <li>Open the Alexa app.</li>
+                <li>Create a routine that runs on an Echo device.</li>
+                <li>Set the first trigger for 7 AM.</li>
+                <li>Add the custom command “ask nudge to run quiet sync.”</li>
+                <li>Add a 4-hour wait and repeat the same custom command.</li>
+                <li>Continue until the routine covers 7 AM, 11 AM, 3 PM, 7 PM, and 11 PM.</li>
+              </ol>
+            </section>
+
+            <section className="project-section">
+              <h2>Demo Screenshot Checklist</h2>
+              <ul>
+                <li>Account linking completed in the Alexa app.</li>
+                <li>Google Calendar event before sync.</li>
+                <li>Alexa reminder created after sync.</li>
+                <li>Echo routine custom command for quiet sync.</li>
+                <li>Delete-data command or support instructions, if requested during review.</li>
               </ul>
             </section>
 
