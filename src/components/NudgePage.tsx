@@ -94,11 +94,6 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
               <h2>Links</h2>
               <ul className="nudge-inline-links">
                 <li>
-                  <a href="https://github.com/myasumoto16/AlexaAnnouncer" target="_blank" rel="noopener noreferrer">
-                    GitHub Repository
-                  </a>
-                </li>
-                <li>
                   <Link to="/projects/nudge/privacy">Privacy Policy</Link>
                 </li>
                 <li>
