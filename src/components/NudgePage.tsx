@@ -103,23 +103,12 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
             </section>
 
             <section className="project-section">
-              <h2>Demo Flow</h2>
+              <h2>How It Works</h2>
               <ul>
-                <li>Google Calendar event → Nudge sync → Alexa reminder.</li>
-                <li>Google Calendar event update → existing Alexa reminder update.</li>
-                <li>Google Calendar event deletion or <code>#silent</code> tag → Alexa reminder removal.</li>
-                <li>Echo routine quiet sync → new events picked up without a spoken success response.</li>
-              </ul>
-            </section>
-
-            <section className="project-section">
-              <h2>Screenshot Checklist</h2>
-              <ul>
-                <li>Alexa app account-linking screen for Nudge.</li>
-                <li>Google consent screen showing Calendar read-only access.</li>
-                <li>Example Google Calendar event used for testing.</li>
-                <li>Alexa reminder created from that calendar event.</li>
-                <li>Echo routine action using “ask nudge to run quiet sync.”</li>
+                <li>Nudge reads upcoming Google Calendar events after the user links their account.</li>
+                <li>Nudge creates matching Alexa reminders for events that should be announced.</li>
+                <li>When calendar events move or are deleted, Nudge updates or removes the matching Alexa reminders.</li>
+                <li>A quiet Echo routine can refresh new events during the day without a spoken success response.</li>
               </ul>
             </section>
 
@@ -231,17 +220,6 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
                 <li>Add a 4-hour wait and repeat the same custom command.</li>
                 <li>Continue until the routine covers 7 AM, 11 AM, 3 PM, 7 PM, and 11 PM.</li>
               </ol>
-            </section>
-
-            <section className="project-section">
-              <h2>Demo Screenshot Checklist</h2>
-              <ul>
-                <li>Account linking completed in the Alexa app.</li>
-                <li>Google Calendar event before sync.</li>
-                <li>Alexa reminder created after sync.</li>
-                <li>Echo routine custom command for quiet sync.</li>
-                <li>Delete-data command or support instructions, if requested during review.</li>
-              </ul>
             </section>
 
             <section className="project-section">
