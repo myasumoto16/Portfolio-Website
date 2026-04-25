@@ -16,6 +16,7 @@ import Craft from './components/Craft';
 import Footer from './components/Footer';
 import ProjectDetail from './components/ProjectDetail';
 import NudgePage from './components/NudgePage';
+import PawsPage from './components/PawsPage';
 import Recipes from './components/Recipes';
 import RecipeDetails from './components/RecipeDetails';
 import Blog from './components/Blog';
@@ -231,6 +232,9 @@ function App() {
             <Route path="/projects/nudge" element={<NudgePage />} />
             <Route path="/projects/nudge/privacy" element={<NudgePage variant="privacy" />} />
             <Route path="/projects/nudge/support" element={<NudgePage variant="support" />} />
+            <Route path="/projects/paws" element={<PawsPage />} />
+            <Route path="/projects/paws/privacy" element={<PawsPage variant="privacy" />} />
+            <Route path="/projects/paws/support" element={<PawsPage variant="support" />} />
             <Route path="/projects/:projectId" element={<ProjectDetail projects={projects} />} />
             <Route path="/music" element={<Music />} />
             <Route path="/contact" element={<Contact />} />
