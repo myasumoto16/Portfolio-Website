@@ -64,7 +64,7 @@ export const projects: Project[] = [
     detail: false,
   },
   {
-    id: 'pawsapp',
+    id: 'paws',
     title: 'Paws 🐾',
     description:
       'Privacy-first iOS home screen launcher widget that fights phone addiction. Free apps open instantly; restricted apps (social media, news) require a 30-second countdown + PIN gate. Built in Swift/SwiftUI with WidgetKit, AppIntents, and Keychain — zero third-party dependencies, all data stays on device.',
