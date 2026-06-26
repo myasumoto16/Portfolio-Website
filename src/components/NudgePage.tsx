@@ -131,6 +131,8 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
 
         {isPrivacy && (
           <>
+            <p className="nudge-last-updated"><em>Last updated: 2026-06-26</em></p>
+
             <section className="project-section">
               <h2>Summary</h2>
               <ul>
@@ -140,13 +142,37 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
             </section>
 
             <section className="project-section">
+              <h2>Google API Services User Data Policy</h2>
+              <p>
+                Nudge’s use and transfer of information received from Google APIs to any other app
+                will adhere to the{' '}
+                <a
+                  href="https://developers.google.com/terms/api-services-user-data-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google API Services User Data Policy
+                </a>
+                , including the Limited Use requirements.
+              </p>
+            </section>
+
+            <section className="project-section">
               <h2>Information We Access</h2>
               <ul>
-                <li>Google account information needed for account linking.</li>
-                <li>Google Calendar event data needed to create or maintain reminders.</li>
+                <li>Google account information needed for account linking (Google account ID and the email address associated with the linked account).</li>
+                <li>Google Calendar event data (event title, start and end time, status, and reminder overrides) needed to create or maintain Alexa reminders.</li>
                 <li>Calendar IDs selected by the user.</li>
                 <li>Reminder timing preferences and sync metadata.</li>
                 <li>Alexa user identifier and reminder mapping metadata needed to update existing reminders.</li>
+              </ul>
+              <p>
+                Nudge requests the following Google OAuth scopes, kept to the minimum needed to operate:
+              </p>
+              <ul>
+                <li><code>https://www.googleapis.com/auth/calendar.readonly</code> — read-only access to the user’s calendars and events.</li>
+                <li><code>email</code> — the email address associated with the linked Google account.</li>
+                <li><code>openid</code> — the Google account identifier used for account linking.</li>
               </ul>
             </section>
 
@@ -154,9 +180,20 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
               <h2>Information We Store</h2>
               <ul>
                 <li>Linked account state.</li>
-                <li>Google refresh token in encrypted form.</li>
+                <li>Google refresh token, encrypted at the application layer before storage.</li>
                 <li>Selected calendars, sync state, and reminder settings.</li>
                 <li>Reminder mappings and Google Calendar watch-channel metadata.</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Data Storage and Security</h2>
+              <ul>
+                <li>Nudge data is stored in Amazon DynamoDB in the AWS <code>us-east-1</code> region.</li>
+                <li>DynamoDB tables use AWS-managed encryption at rest.</li>
+                <li>Google refresh tokens receive additional application-layer encryption using AES-256-GCM before being written to DynamoDB.</li>
+                <li>All network traffic between Nudge and Google, Alexa, and AWS APIs is encrypted in transit over HTTPS/TLS.</li>
+                <li>Nudge runs on AWS Lambda using IAM least-privilege roles, so each function can access only the data it needs to perform its task.</li>
               </ul>
             </section>
 
@@ -164,29 +201,71 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
               <h2>How Data Is Used</h2>
               <ul>
                 <li>Create Alexa reminders from Google Calendar events.</li>
-                <li>Update or delete existing reminders when calendar events change.</li>
+                <li>Update or delete existing Alexa reminders when calendar events change.</li>
                 <li>Avoid duplicate reminders and maintain Google Calendar sync state.</li>
                 <li>Use Google Calendar read-only data only to provide Nudge functionality requested by the user.</li>
+                <li>Nudge does not sell Google user data.</li>
+                <li>Nudge does not use Google user data for advertising.</li>
+                <li>Nudge does not use Google user data to train generalized AI or machine learning models.</li>
               </ul>
             </section>
 
             <section className="project-section">
               <h2>Sharing and Google User Data</h2>
+              <p>
+                Nudge shares the minimum data needed with the following service providers, only to operate the skill:
+              </p>
               <ul>
-                <li>Nudge does not sell Google user data.</li>
-                <li>Nudge does not use Google user data for advertising.</li>
-                <li>Nudge does not use Google user data to train generalized AI or machine learning models.</li>
-                <li>Nudge does not share Google user data with third parties except when required to operate the service, such as communicating with Google Calendar APIs, Alexa services, and AWS infrastructure used by Nudge.</li>
+                <li><strong>Google Calendar API</strong> — to read the user’s calendar events so Nudge can create matching Alexa reminders.</li>
+                <li><strong>Amazon Alexa (Reminders API, Skill Messaging, Proactive Events API)</strong> — to create, update, and deliver spoken reminders on the user’s Echo devices.</li>
+                <li><strong>Amazon Web Services (AWS Lambda, Amazon DynamoDB, Amazon API Gateway, in <code>us-east-1</code>)</strong> — to host Nudge’s compute, store sync state and reminder mappings, and receive Google Calendar webhook notifications.</li>
               </ul>
+              <p>
+                Nudge does not share Google user data with any other third party, and these providers receive data only as needed to provide the service.
+              </p>
             </section>
 
             <section className="project-section">
               <h2>Data Retention and Deletion</h2>
               <ul>
-                <li>Nudge keeps data only as long as needed to operate calendar sync and reminder maintenance.</li>
-                <li>Users can say “Alexa, ask nudge to delete my data” to remove Nudge-owned sync records, reminder mappings, and calendar watch metadata.</li>
-                <li>Users should also unlink Nudge or disable the skill in the Alexa app if they want to revoke Google account access through account linking.</li>
+                <li>Long-term Nudge records (linked account state, encrypted Google refresh token, calendar IDs, reminder mappings, and sync state) are kept until the user requests deletion.</li>
+                <li>Short-lived records expire automatically through DynamoDB TTL:
+                  <ul>
+                    <li>Temporary Google account-linking token records are deleted within 7 days.</li>
+                    <li>Past due-event records are deleted approximately one hour after the event fires.</li>
+                  </ul>
+                </li>
+                <li>Users can request deletion at any time by either:
+                  <ul>
+                    <li>saying “Alexa, ask nudge to delete my data” while the skill is enabled, or</li>
+                    <li>emailing <a href="mailto:yasumotom98@gmail.com">yasumotom98@gmail.com</a> from the email address associated with the linked Google account.</li>
+                  </ul>
+                </li>
+                <li>Email deletion requests are handled within 30 days of receipt.</li>
+                <li>Disabling the skill in the Alexa app stops new reminders but does not by itself delete Nudge-owned data. Use the delete intent or email request to remove stored data.</li>
+                <li>To fully revoke Google account access, unlink Nudge or disable the skill in the Alexa app.</li>
               </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Children’s Data</h2>
+              <p>
+                Nudge is not directed to children under 13, and Nudge does not knowingly collect
+                personal data from children under 13. If a parent or guardian believes a child has
+                provided personal data to Nudge, please contact{' '}
+                <a href="mailto:yasumotom98@gmail.com">yasumotom98@gmail.com</a> and the data will
+                be deleted.
+              </p>
+            </section>
+
+            <section className="project-section">
+              <h2>Changes to This Policy</h2>
+              <p>
+                This privacy policy may be updated from time to time. Material changes will be
+                reflected by updating the “Last updated” date at the top of this page and, where
+                appropriate, by an announcement in the Nudge skill description on Alexa. Users are
+                encouraged to review this policy periodically.
+              </p>
             </section>
 
             <section className="project-section">
