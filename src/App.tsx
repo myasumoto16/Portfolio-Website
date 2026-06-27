@@ -45,7 +45,7 @@ export const projects: Project[] = [
     description:
       'Alexa skill that turns Google Calendar events into spoken Echo reminders and keeps them aligned through background sync plus an Echo quiet-sync routine.',
     technologies: ['Alexa Skills Kit', 'AWS Lambda', 'DynamoDB', 'Google Calendar API', 'OAuth 2.0'],
-    repo: 'https://github.com/myasumoto16/AlexaAnnouncer',
+    repo: 'https://github.com/myasumoto16/nudge',
     demo: '',
     detail: true,
     intro: [

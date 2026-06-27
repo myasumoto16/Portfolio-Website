@@ -180,33 +180,93 @@ const PawsPage: React.FC<PawsPageProps> = ({ variant = 'overview' }) => {
         {isSupport && (
           <>
             <section className="project-section">
-              <h2>Getting Started</h2>
+              <h2>Initial Setup</h2>
               <ol className="nudge-step-list">
-                <li>Install Paws and open it — the onboarding will walk you through full setup.</li>
-                <li>Enable grayscale: Settings → Accessibility → Display &amp; Text Size → Color Filters → Grayscale.</li>
-                <li>Save the black wallpaper (tap "Save wallpaper" in the app) and set it as your home screen background.</li>
-                <li>Use Focus Mode to show only one home screen page — the one with the Paws widget.</li>
-                <li>Add the Paws widget (Large or Extra Large) to that page.</li>
-                <li>Set your PIN in the app, then add apps and mark social media / distracting apps as restricted.</li>
+                <li>Install Paws and open it — onboarding walks you through each step.</li>
+                <li><strong>Grayscale:</strong> Settings → Accessibility → Display &amp; Text Size → Color Filters → turn on Color Filters → select Grayscale.</li>
+                <li><strong>Remove the Search Button:</strong> Long press the home screen → Customize → turn off Search. (Or: Settings → Home Screen &amp; App Library → Show on Home Screen → Off.)</li>
+                <li><strong>Empty the Dock:</strong> Drag every dock app upward onto the home screen. Once empty, the gray dock tray disappears.</li>
+                <li><strong>Wallpaper:</strong> In Paws: Settings → SAVE WALLPAPER. Then in iOS: Settings → Wallpaper → + → Photos → select it → Set for Both Screens.</li>
+                <li><strong>Focus Mode:</strong> Settings → Focus → + → Custom → name it → skip People/Apps → tap Customize Screens → deselect all pages except the Paws widget page → Done. To keep it always on: Add Schedule → Turn On Automatically → set a range covering your whole day.</li>
               </ol>
+            </section>
+
+            <section className="project-section">
+              <h2>Adding the Widget</h2>
+              <ul>
+                <li><strong>How to add:</strong> Long press the home screen → tap + → search "Paws" → choose Large or Extra Large → tap Add Widget. Place it so it fills the page.</li>
+                <li><strong>Important — Large icon size:</strong> After placing the widget, long press the home screen → Customize → set size to Large. Leave color as Automatic (do NOT select Dark — it overrides the widget background and breaks the color match).</li>
+                <li><strong>One widget = one group:</strong> Each widget shows one group's apps. To show two sets, add the widget twice. Long press widget → Edit Widget → choose which group it shows.</li>
+                <li><strong>Switch a widget's group:</strong> Long press the widget → Edit Widget → tap the Group field → select a different group.</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Managing Apps</h2>
+              <ul>
+                <li><strong>Adding apps:</strong> Tap [ + ADD APP ] at the bottom of the main screen. You can browse presets, use Shortcut mode, add a web page, or enter a custom URL scheme.</li>
+                <li><strong>[LOCK] vs [free]:</strong> Tap the label next to any app to toggle. [free] opens immediately. [LOCK] starts a countdown then asks for your PIN.</li>
+                <li><strong>Edit an app:</strong> Tap the app name to rename it, change launch method, toggle restriction, move to another group, or delete it.</li>
+                <li><strong>Reorder &amp; delete:</strong> Drag the handle on the right to reorder. Swipe left → Delete to remove.</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Widget Groups</h2>
+              <ul>
+                <li><strong>What is a group?</strong> An ordered list of up to 6 apps shown on one widget. You can have as many groups as you want — one per widget on your home screen.</li>
+                <li><strong>Create a group:</strong> Tap [ + ] in the group tab strip at the top of the main screen.</li>
+                <li><strong>Navigate groups:</strong> Tap a chip in the tab strip to switch. Tap the active (white) chip to open the group editor.</li>
+                <li><strong>Edit a group:</strong> Tap the active chip → rename, change font size/style, reorder apps, or delete the group.</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Adding Apps via Shortcuts</h2>
+              <p style={{fontSize: '0.9em', opacity: 0.7}}>Use this for apps that can't be opened reliably with a URL scheme from a widget (Camera, FaceTime, Phone, etc.).</p>
+              <ul>
+                <li><strong>Auto-create (known apps):</strong> Tap [ + OPEN VIA SHORTCUT ] → type the app name → tap [ AUTO-CREATE SHORTCUT ] → tap "Add Shortcut" in the share sheet → tap [ ADD TO WIDGET LIST ].</li>
+                <li><strong>Manual setup:</strong> Tap [ + OPEN VIA SHORTCUT ] → enter name → tap [ OPEN SHORTCUTS APP ] → in Shortcuts: tap + → search "Open App" → pick the app → rename shortcut to match the name you entered → Done → back in Paws tap [ ADD TO WIDGET LIST ].</li>
+                <li><strong>Shortcut Name vs Name on Widget:</strong> Name on Widget is what shows in the widget. Shortcut Name must exactly match the shortcut's name in the Shortcuts app.</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Adding Web Pages</h2>
+              <ul>
+                <li>Tap [ + WEB PAGE ] → enter a name and URL → tap Add. Opens Safari directly to that URL.</li>
+                <li>Web pages can be marked [LOCK] just like apps — useful for news sites, social feeds, etc.</li>
+                <li>Enter the full URL starting with https://. If you skip the prefix, https:// is added automatically.</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Custom URL Schemes</h2>
+              <ul>
+                <li>Many iOS apps register a custom URL like "spotify://" that opens them directly.</li>
+                <li>Tap [ + CUSTOM URL SCHEME ] → enter the app name and URL scheme → tap [ ADD ].</li>
+                <li>To find a scheme: search online for "[app name] iOS URL scheme". Examples: Spotify → spotify://, Telegram → tg://, Notion → notion://, Slack → slack://open.</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Restrictions</h2>
+              <ul>
+                <li><strong>How it works:</strong> Tap a [LOCK] app in the widget → countdown starts → enter PIN → correct PIN opens the app → wrong PIN restarts the countdown.</li>
+                <li><strong>Change delay:</strong> Settings → RESTRICTION DELAY slider (5 seconds to 5 minutes).</li>
+                <li><strong>Change PIN:</strong> Settings → CHANGE PIN → enter current PIN → enter new PIN twice.</li>
+              </ul>
             </section>
 
             <section className="project-section">
               <h2>Common Issues</h2>
               <ul>
-                <li><strong>Widget shows "open paws to add apps":</strong> Open the Paws app, add at least one app, then long-press the widget and select your group.</li>
+                <li><strong>Widget shows "open paws to add apps":</strong> Open Paws, add at least one app, then long-press the widget and select your group.</li>
                 <li><strong>Widget not updating after changes:</strong> iOS throttles widget refreshes. Wait a few seconds or lock and unlock the screen.</li>
-                <li><strong>An app doesn't open from the widget:</strong> Some apps (Phone, FaceTime) require a Shortcut instead of a URL scheme. Open the app in Paws, tap the app name to edit, and switch to "shortcut" mode.</li>
+                <li><strong>An app doesn't open from the widget:</strong> Some apps require Shortcut mode. Tap the app name in Paws to edit it and switch to "shortcut" mode.</li>
                 <li><strong>Forgot PIN:</strong> There is no PIN recovery — this is intentional. Delete and reinstall Paws to reset. Your app list will be lost.</li>
                 <li><strong>PIN lockout:</strong> After 5 wrong attempts you're locked out for 30 seconds. Subsequent failures extend the lockout up to 10 minutes.</li>
-              </ul>
-            </section>
-
-            <section className="project-section">
-              <h2>Reset the App</h2>
-              <ul>
-                <li>To reset all data: delete Paws from your device and reinstall from the App Store.</li>
-                <li>To re-run onboarding: Settings (⚙ in the app) → Re-run setup.</li>
+                <li><strong>Reset everything:</strong> Settings (⚙ in the app) → Re-run Onboarding. Or delete and reinstall to wipe all data.</li>
               </ul>
             </section>
 
