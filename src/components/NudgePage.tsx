@@ -30,6 +30,8 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
         <span className="tech-tag">DynamoDB</span>
         <span className="tech-tag">Google Calendar API</span>
         <span className="tech-tag">OAuth 2.0</span>
+        <span className="tech-tag">Google Apps Script</span>
+        <span className="tech-tag">Voice Monkey</span>
       </div>
 
       <div className="project-links nudge-nav-links">
@@ -109,6 +111,17 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
                 <li>Nudge creates matching Alexa reminders for events that should be announced.</li>
                 <li>When calendar events move or are deleted, Nudge updates or removes the matching Alexa reminders.</li>
                 <li>A quiet Echo routine can refresh new events during the day without a spoken success response.</li>
+              </ul>
+            </section>
+
+            <section className="project-section">
+              <h2>Personal Extension</h2>
+              <ul>
+                <li>For continuous personal use, a Google Apps Script time-driven cron fires every 60 seconds and hits the Voice Monkey REST API over HTTPS.</li>
+                <li>Voice Monkey toggles a virtual Alexa contact sensor, which triggers an Echo routine that runs "ask nudge to run quiet sync" automatically — no local hardware or running terminal required.</li>
+                <li>The pipeline is one-way: Voice Monkey can only toggle the virtual switch and cannot query local devices or credentials.</li>
+                <li>Because the cron runs on Google's infrastructure, the loop stays alive even when the local machine is off.</li>
+                <li>This is a personal setup on top of the standard skill — not part of the normal user flow.</li>
               </ul>
             </section>
 
