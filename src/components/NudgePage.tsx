@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './ProjectDetail.css';
 import './NudgePage.css';
+import nudgeArchitecture from '../assets/projects/nudge-architecture.svg';
 
 type NudgePageVariant = 'overview' | 'privacy' | 'support';
 
@@ -61,71 +62,73 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
       <div className="project-content">
         {isOverview && (
           <>
-            <section className="project-section">
-              <h2>Overview</h2>
-              <ul>
-                <li>Nudge turns Google Calendar events into spoken Alexa reminders.</li>
-                <li>After one-time setup, an Echo routine can keep new events refreshed automatically.</li>
-                <li>Existing reminders update or delete when calendar events change.</li>
-                <li>Nudge is developed and operated by Masakazu Yasumoto.</li>
-              </ul>
-            </section>
+            <p>Nudge is an Alexa skill that turns Google Calendar events into spoken Echo reminders. It is <strong>automatic after one-time setup</strong>, staying inside Amazon's reminder API constraints.</p>
 
-            <section className="project-section">
-              <h2>What It Does</h2>
-              <ul>
-                <li>Creates spoken Echo reminders from upcoming Google Calendar events.</li>
-                <li>Supports multiple calendars from one linked Google account.</li>
-                <li>Uses Google event reminder overrides and calendar default reminder timing when available.</li>
-                <li>Skips all-day, cancelled, free, and <code>#silent</code> events.</li>
-                <li>Lets users trigger a silent quiet sync through an Echo routine.</li>
-              </ul>
-            </section>
-
-            <section className="project-section">
-              <h2>Recommended Setup</h2>
-              <ul>
-                <li>Enable Nudge in Alexa and link the Google account that owns the calendar.</li>
-                <li>Say “Alexa, ask nudge to sync my calendar.”</li>
-                <li>Create one Echo routine with quiet refreshes at 7 AM, 11 AM, 3 PM, 7 PM, and 11 PM.</li>
-                <li>Use the exact routine command: “ask nudge to run quiet sync.”</li>
-              </ul>
-            </section>
-
-            <section className="project-section">
-              <h2>How To Use Nudge</h2>
-              <ol className="nudge-step-list">
-                <li>Enable Nudge in the Alexa app.</li>
-                <li>Link the Google account that owns the calendar.</li>
-                <li>Run the first sync: “Alexa, ask nudge to sync my calendar.”</li>
-                <li>Check the Alexa app to confirm reminders were created.</li>
-                <li>Create one Echo routine that runs “ask nudge to run quiet sync” during the day.</li>
-                <li>Move or delete a Google Calendar event to confirm the matching Alexa reminder updates.</li>
-              </ol>
-            </section>
-
-            <section className="project-section">
+            <section className=”project-section”>
               <h2>How It Works</h2>
+              <p>The architecture is reminder-first:</p>
+              <pre className=”nudge-flow”>{`manual sync or quiet routine sync
+  → create real spoken Alexa Reminders
+  → store Google event → Alexa alertToken mappings
+
+Google Calendar changes later
+  → webhook + incremental sync
+  → update/delete existing Alexa Reminders automatically
+
+brand-new event later
+  → picked up on next manual sync or Echo routine run`}</pre>
               <ul>
-                <li>Nudge reads upcoming Google Calendar events after the user links their account.</li>
-                <li>Nudge creates matching Alexa reminders for events that should be announced.</li>
-                <li>When calendar events move or are deleted, Nudge updates or removes the matching Alexa reminders.</li>
-                <li>A quiet Echo routine can refresh new events during the day without a spoken success response.</li>
+                <li>New reminders must be created during an active skill session — existing reminders can be updated or deleted later using the stored <code>alertToken</code>.</li>
+                <li>Nudge uses active sync for creation and background Skill Messaging for maintenance.</li>
               </ul>
             </section>
 
-            <section className="project-section">
+            <section className=”project-section”>
+              <h2>Recommended Setup</h2>
+              <ol className=”nudge-step-list”>
+                <li>Enable Nudge and link Google Calendar.</li>
+                <li>Say: <code>Alexa, ask nudge to sync my calendar</code></li>
+                <li>Create one Alexa routine on the Echo device:<br />
+                  <code>7:00 AM → ask nudge to run quiet sync → wait 4 hours → repeat ×4</code>
+                </li>
+              </ol>
+              <p>After that: new events are picked up on the next routine run, changed events update existing reminders automatically, and deleted or silenced events remove reminders automatically.</p>
+            </section>
+
+            <section className=”project-section”>
+              <h2>Features</h2>
+              <ul>
+                <li>Spoken Echo reminders from Google Calendar events</li>
+                <li>Configurable default reminder timing</li>
+                <li>Google event override and calendar default reminder timing</li>
+                <li>Multiple calendars from one linked Google account</li>
+                <li>Filters: all-day, cancelled, free/transparent, <code>#silent</code> / <code>[silent]</code></li>
+                <li>Background update/delete of existing reminders</li>
+                <li>Quiet sync intent for routines</li>
+              </ul>
+            </section>
+
+            <section className=”project-section”>
+              <h2>Architecture</h2>
+              <img src={nudgeArchitecture} alt=”Nudge architecture overview” style={{ width: '100%', borderRadius: '8px', marginTop: '8px' }} />
+            </section>
+
+            <section className=”project-section”>
               <h2>Personal Extension</h2>
+              <p>For continuous personal use, a decoupled webhook pipeline fires quiet sync every 60 seconds without any local runtime:</p>
+              <pre className=”nudge-flow”>{`Google Apps Script (60-second time-driven cron)
+  ──(HTTPS GET)──> Voice Monkey REST API
+  ──(virtual sensor state change)──> Alexa smart home event
+  ──> Echo routine fires “ask nudge to run quiet sync”`}</pre>
               <ul>
-                <li>For continuous personal use, a Google Apps Script time-driven cron fires every 60 seconds and hits the Voice Monkey REST API over HTTPS.</li>
-                <li>Voice Monkey toggles a virtual Alexa contact sensor, which triggers an Echo routine that runs "ask nudge to run quiet sync" automatically — no local hardware or running terminal required.</li>
-                <li>The pipeline is one-way: Voice Monkey can only toggle the virtual switch and cannot query local devices or credentials.</li>
-                <li>Because the cron runs on Google's infrastructure, the loop stays alive even when the local machine is off.</li>
-                <li>This is a personal setup on top of the standard skill — not part of the normal user flow.</li>
+                <li><strong>Google Apps Script</strong> runs <code>UrlFetchApp.fetch()</code> every 60 seconds — loop stays alive even when the local machine is off.</li>
+                <li><strong>Voice Monkey</strong> toggles a virtual contact sensor registered as an Alexa smart home device.</li>
+                <li><strong>Security:</strong> one-way HTTP GET only — Voice Monkey cannot query local devices or credentials.</li>
+                <li>This is a personal setup and is not part of the standard user flow.</li>
               </ul>
             </section>
 
-            <section className="project-section">
+            <section className=”project-section”>
               <h2>Links</h2>
               <ul className="nudge-inline-links">
                 <li>
