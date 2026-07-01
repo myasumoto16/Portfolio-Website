@@ -78,8 +78,8 @@ Google Calendar changes later
 brand-new event later
   → picked up on next manual sync or Echo routine run`}</pre>
               <ul>
-                <li>New reminders must be created during an active skill session — existing reminders can be updated or deleted later using the stored <code>alertToken</code>.</li>
-                <li>Nudge uses active sync for creation and background Skill Messaging for maintenance.</li>
+                <li><strong>New reminders can only be created during an active skill session.</strong> The Alexa Reminders API rejects creation requests from background Lambdas — Amazon does not allow a skill to silently push a new spoken reminder without the user being in session. This is why new events always require a sync (manual or Echo routine).</li>
+                <li>Existing reminders can be updated or deleted out-of-session using the stored <code>alertToken</code>, so calendar changes are handled automatically via background Skill Messaging.</li>
               </ul>
             </section>
 
