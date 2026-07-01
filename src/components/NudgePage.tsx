@@ -64,10 +64,10 @@ const NudgePage: React.FC<NudgePageProps> = ({ variant = 'overview' }) => {
           <>
             <p>Nudge is an Alexa skill that turns Google Calendar events into spoken Echo reminders. It is <strong>automatic after one-time setup</strong>, staying inside Amazon's reminder API constraints.</p>
 
-            <section className=”project-section”>
+            <section className="project-section">
               <h2>How It Works</h2>
               <p>The architecture is reminder-first:</p>
-              <pre className=”nudge-flow”>{`manual sync or quiet routine sync
+              <pre className="nudge-flow">{`manual sync or quiet routine sync
   → create real spoken Alexa Reminders
   → store Google event → Alexa alertToken mappings
 
@@ -83,9 +83,9 @@ brand-new event later
               </ul>
             </section>
 
-            <section className=”project-section”>
+            <section className="project-section">
               <h2>Recommended Setup</h2>
-              <ol className=”nudge-step-list”>
+              <ol className="nudge-step-list">
                 <li>Enable Nudge and link Google Calendar.</li>
                 <li>Say: <code>Alexa, ask nudge to sync my calendar</code></li>
                 <li>Create one Alexa routine on the Echo device:<br />
@@ -95,7 +95,7 @@ brand-new event later
               <p>After that: new events are picked up on the next routine run, changed events update existing reminders automatically, and deleted or silenced events remove reminders automatically.</p>
             </section>
 
-            <section className=”project-section”>
+            <section className="project-section">
               <h2>Features</h2>
               <ul>
                 <li>Spoken Echo reminders from Google Calendar events</li>
@@ -108,18 +108,18 @@ brand-new event later
               </ul>
             </section>
 
-            <section className=”project-section”>
+            <section className="project-section">
               <h2>Architecture</h2>
-              <img src={nudgeArchitecture} alt=”Nudge architecture overview” style={{ width: '100%', borderRadius: '8px', marginTop: '8px' }} />
+              <img src={nudgeArchitecture} alt="Nudge architecture overview" style={{ width: '100%', borderRadius: '8px', marginTop: '8px' }} />
             </section>
 
-            <section className=”project-section”>
+            <section className="project-section">
               <h2>Personal Extension</h2>
               <p>For continuous personal use, a decoupled webhook pipeline fires quiet sync every 60 seconds without any local runtime:</p>
-              <pre className=”nudge-flow”>{`Google Apps Script (60-second time-driven cron)
+              <pre className="nudge-flow">{`Google Apps Script (60-second time-driven cron)
   ──(HTTPS GET)──> Voice Monkey REST API
   ──(virtual sensor state change)──> Alexa smart home event
-  ──> Echo routine fires “ask nudge to run quiet sync”`}</pre>
+  ──> Echo routine fires "ask nudge to run quiet sync"`}</pre>
               <ul>
                 <li><strong>Google Apps Script</strong> runs <code>UrlFetchApp.fetch()</code> every 60 seconds — loop stays alive even when the local machine is off.</li>
                 <li><strong>Voice Monkey</strong> toggles a virtual contact sensor registered as an Alexa smart home device.</li>
@@ -128,7 +128,7 @@ brand-new event later
               </ul>
             </section>
 
-            <section className=”project-section”>
+            <section className="project-section">
               <h2>Links</h2>
               <ul className="nudge-inline-links">
                 <li>
@@ -152,7 +152,7 @@ brand-new event later
             <section className="project-section">
               <h2>Summary</h2>
               <ul>
-                <li>Nudge uses Google Calendar data and Alexa account data only to create and maintain Alexa reminders tied to a user’s calendar events.</li>
+                <li>Nudge uses Google Calendar data and Alexa account data only to create and maintain Alexa reminders tied to a user's calendar events.</li>
                 <li>Nudge is developed and operated by Masakazu Yasumoto.</li>
               </ul>
             </section>
@@ -160,7 +160,7 @@ brand-new event later
             <section className="project-section">
               <h2>Google API Services User Data Policy</h2>
               <p>
-                Nudge’s use and transfer of information received from Google APIs to any other app
+                Nudge's use and transfer of information received from Google APIs to any other app
                 will adhere to the{' '}
                 <a
                   href="https://developers.google.com/terms/api-services-user-data-policy"
@@ -186,7 +186,7 @@ brand-new event later
                 Nudge requests the following Google OAuth scopes, kept to the minimum needed to operate:
               </p>
               <ul>
-                <li><code>https://www.googleapis.com/auth/calendar.readonly</code> — read-only access to the user’s calendars and events.</li>
+                <li><code>https://www.googleapis.com/auth/calendar.readonly</code> — read-only access to the user's calendars and events.</li>
                 <li><code>email</code> — the email address associated with the linked Google account.</li>
                 <li><code>openid</code> — the Google account identifier used for account linking.</li>
               </ul>
@@ -232,9 +232,9 @@ brand-new event later
                 Nudge shares the minimum data needed with the following service providers, only to operate the skill:
               </p>
               <ul>
-                <li><strong>Google Calendar API</strong> — to read the user’s calendar events so Nudge can create matching Alexa reminders.</li>
-                <li><strong>Amazon Alexa (Reminders API, Skill Messaging, Proactive Events API)</strong> — to create, update, and deliver spoken reminders on the user’s Echo devices.</li>
-                <li><strong>Amazon Web Services (AWS Lambda, Amazon DynamoDB, Amazon API Gateway, in <code>us-east-1</code>)</strong> — to host Nudge’s compute, store sync state and reminder mappings, and receive Google Calendar webhook notifications.</li>
+                <li><strong>Google Calendar API</strong> — to read the user's calendar events so Nudge can create matching Alexa reminders.</li>
+                <li><strong>Amazon Alexa (Reminders API, Skill Messaging, Proactive Events API)</strong> — to create, update, and deliver spoken reminders on the user's Echo devices.</li>
+                <li><strong>Amazon Web Services (AWS Lambda, Amazon DynamoDB, Amazon API Gateway, in <code>us-east-1</code>)</strong> — to host Nudge's compute, store sync state and reminder mappings, and receive Google Calendar webhook notifications.</li>
               </ul>
               <p>
                 Nudge does not share Google user data with any other third party, and these providers receive data only as needed to provide the service.
@@ -253,7 +253,7 @@ brand-new event later
                 </li>
                 <li>Users can request deletion at any time by either:
                   <ul>
-                    <li>saying “Alexa, ask nudge to delete my data” while the skill is enabled, or</li>
+                    <li>saying "Alexa, ask nudge to delete my data" while the skill is enabled, or</li>
                     <li>emailing <a href="mailto:yasumotom98@gmail.com">yasumotom98@gmail.com</a> from the email address associated with the linked Google account.</li>
                   </ul>
                 </li>
@@ -264,7 +264,7 @@ brand-new event later
             </section>
 
             <section className="project-section">
-              <h2>Children’s Data</h2>
+              <h2>Children's Data</h2>
               <p>
                 Nudge is not directed to children under 13, and Nudge does not knowingly collect
                 personal data from children under 13. If a parent or guardian believes a child has
@@ -278,7 +278,7 @@ brand-new event later
               <h2>Changes to This Policy</h2>
               <p>
                 This privacy policy may be updated from time to time. Material changes will be
-                reflected by updating the “Last updated” date at the top of this page and, where
+                reflected by updating the "Last updated" date at the top of this page and, where
                 appropriate, by an announcement in the Nudge skill description on Alexa. Users are
                 encouraged to review this policy periodically.
               </p>
@@ -300,8 +300,8 @@ brand-new event later
               <ol className="nudge-step-list">
                 <li>Enable Nudge in the Alexa app.</li>
                 <li>Link the Google account that owns the calendar.</li>
-                <li>Say “Alexa, ask nudge to sync my calendar.”</li>
-                <li>Create one Echo routine that runs “ask nudge to run quiet sync” at 7 AM, 11 AM, 3 PM, 7 PM, and 11 PM.</li>
+                <li>Say "Alexa, ask nudge to sync my calendar."</li>
+                <li>Create one Echo routine that runs "ask nudge to run quiet sync" at 7 AM, 11 AM, 3 PM, 7 PM, and 11 PM.</li>
               </ol>
             </section>
 
@@ -311,7 +311,7 @@ brand-new event later
                 <li>Open the Alexa app.</li>
                 <li>Create a routine that runs on an Echo device.</li>
                 <li>Set the first trigger for 7 AM.</li>
-                <li>Add the custom command “ask nudge to run quiet sync.”</li>
+                <li>Add the custom command "ask nudge to run quiet sync."</li>
                 <li>Add a 4-hour wait and repeat the same custom command.</li>
                 <li>Continue until the routine covers 7 AM, 11 AM, 3 PM, 7 PM, and 11 PM.</li>
               </ol>
@@ -330,7 +330,7 @@ brand-new event later
             <section className="project-section">
               <h2>Delete My Data</h2>
               <ul>
-                <li>Say “Alexa, ask nudge to delete my data.”</li>
+                <li>Say "Alexa, ask nudge to delete my data."</li>
                 <li>This removes Nudge-owned sync records, reminder mappings, and calendar watch metadata.</li>
                 <li>If you also want to revoke Google account access, unlink Nudge or disable the skill in the Alexa app.</li>
               </ul>
